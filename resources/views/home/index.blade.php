@@ -37,6 +37,5 @@
          </p>
       </div>
    </div>
-   @include('home.partials.list-file')
 </div>    
 @endsection
