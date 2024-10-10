@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('content.partials.sidebar');
+    return view('home.index');
 });
 
 //tanya dion knp index ku gk bisa jalan

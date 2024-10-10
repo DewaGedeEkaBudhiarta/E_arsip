@@ -1,9 +1,3 @@
-@extends('layouts.app')
-@section('title', 'List File')
-    
-@section('content')
-  @vite(['resources/css/app.css','resources/js/app.js'])
-
   <div class="container mx-auto p-4 md:p-6 lg:p-8 xl:p-10">
     <h1 class="text-3xl font-bold mb-4">Kinerja Bidang Pendidikan</h1>
     <div class="flex justify-between mb-4">
@@ -76,15 +70,3 @@
       </div>
     </div>
   </div>
-@endsection
-
-@section('scripts')
-  <script>
-    function toggleColumns() {
-      var dropdown = document.getElementById("columnDropdown");
-      dropdown.classList.toggle("hidden");
-      dropdown.style.top = "100%"; // Set the top position of the dropdown
-      dropdown.style.right = "0"; // Set the right position of the dropdown
-    }
-  </script>
-@endsection

@@ -9,17 +9,9 @@
   @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
-  {{-- header --}}
-  @include('content.partials.sidebar')
-
-  <div class="container mt-4">
-      @yield('content')
-  </div>
   
-  @yield('scripts')
-
-{{-- footer --}}
-@include('partials.footer')
+  @include('partials.sidebar')
+  @yield('content')
 
 </body>
 </html>
