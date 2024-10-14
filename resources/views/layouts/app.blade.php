@@ -12,6 +12,7 @@
   
   @include('partials.sidebar')
   @yield('content')
+  @yield('scripts')
 
 </body>
 </html>
