@@ -62,8 +62,8 @@
               </td>
           </tr>
           <tr class="bg-white border-b">
-              <td class="py-4 px-6">T100</td>
-              <td class="py-4 px-6">1200</td>
+              <td class="py-4 px-6">T200</td>
+              <td class="py-4 px-6">1300</td>
               <td class="py-4 px-6">Teknik Informatika</td>
               <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
               <td class="py-4 px-6"> </td>
@@ -78,8 +78,8 @@
               </td>
           </tr>
           <tr class="bg-white border-b">
-              <td class="py-4 px-6">T100</td>
-              <td class="py-4 px-6">1200</td>
+              <td class="py-4 px-6">T400</td>
+              <td class="py-4 px-6">1500</td>
               <td class="py-4 px-6">Teknik Informatika</td>
               <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
               <td class="py-4 px-6"> </td>
@@ -94,8 +94,8 @@
               </td>
           </tr>
           <tr class="bg-white border-b">
-              <td class="py-4 px-6">T100</td>
-              <td class="py-4 px-6">1200</td>
+              <td class="py-4 px-6">T110</td>
+              <td class="py-4 px-6">1210</td>
               <td class="py-4 px-6">Teknik Informatika</td>
               <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
               <td class="py-4 px-6"> </td>
