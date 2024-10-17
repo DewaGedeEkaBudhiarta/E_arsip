@@ -35,35 +35,76 @@
   <table class="w-full text-sm text-left text-gray-500">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
-              <th class="py-3 px-6">No</th>
-              <th class="py-3 px-6">Nama Bidang Pendidikan</th>
-              <th class="py-3 px-6">Jumlah Siswa</th>
-              <th class="py-3 px-6">Aksi</th>
+              <th class="py-3 px-6">Kode Klasifikasi</th>
+              <th class="py-3 px-6">No Berkas</th>
+              <th class="py-3 px-6">Nama</th>              
+              <th class="py-3 px-9">Kurun Waktu</th>
+              <th class="py-3 px-6">Indeks(Kata tangkap/Kata Kunci)</th>
+              <th class="py-3 px-6">Keterangan</th>
+              <th class="py-3 px-10">Aksi</th>
           </tr>
       </thead>
       <tbody>
           <tr class="bg-white border-b">
-              <td class="py-4 px-6">1</td>
+              <td class="py-4 px-6">T100</td>
+              <td class="py-4 px-6">1200</td>
               <td class="py-4 px-6">Teknik Informatika</td>
-              <td class="py-4 px-6">100</td>
-              <td class="py-4 px-6">
-                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
+              <td class="py-4 px-6"> </td>
+              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
+              <td class="py-0.5 px-1">
+                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
                       Edit
                   </button>
-                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
                       Hapus
                   </button>
               </td>
           </tr>
           <tr class="bg-white border-b">
-              <td class="py-4 px-6">2</td>
-              <td class="py-4 px-6">Teknik Matematika</td>
-              <td class="py-4 px-6">200</td>
-              <td class="py-4 px-6">
-                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+              <td class="py-4 px-6">T100</td>
+              <td class="py-4 px-6">1200</td>
+              <td class="py-4 px-6">Teknik Informatika</td>
+              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
+              <td class="py-4 px-6"> </td>
+              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
+              <td class="py-0.5 px-1">
+                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
                       Edit
                   </button>
-                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                      Hapus
+                  </button>
+              </td>
+          </tr>
+          <tr class="bg-white border-b">
+              <td class="py-4 px-6">T100</td>
+              <td class="py-4 px-6">1200</td>
+              <td class="py-4 px-6">Teknik Informatika</td>
+              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
+              <td class="py-4 px-6"> </td>
+              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
+              <td class="py-0.5 px-1">
+                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
+                      Edit
+                  </button>
+                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                      Hapus
+                  </button>
+              </td>
+          </tr>
+          <tr class="bg-white border-b">
+              <td class="py-4 px-6">T100</td>
+              <td class="py-4 px-6">1200</td>
+              <td class="py-4 px-6">Teknik Informatika</td>
+              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
+              <td class="py-4 px-6"> </td>
+              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
+              <td class="py-0.5 px-1">
+                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
+                      Edit
+                  </button>
+                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
                       Hapus
                   </button>
               </td>
