@@ -9,3 +9,6 @@ Route::get('/', function () {
 Route::get('/arsip-pasi', function() {
     return view('arsip-pasi.index');
 });
+Route::get('/uploud', function() {
+    return view('uploud-file.index');
+});
