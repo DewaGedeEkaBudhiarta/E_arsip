@@ -1,41 +1,30 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Home')
 
 @section('content')
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <div class="p-4 sm:ml-64">
    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-      <div class="grid grid-cols-3 gap-4 mb-4">
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+      <div class="grid grid-cols-4 gap-4 mb-4">
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-folder fa-2xl"></i>
+            <a href="#" class="text-2xl">Daftar Arsip</a>
          </div>
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-file-lines fa-2xl"></i>
+            <a href="#" class="text-2xl">Informasi Arsip</a>
          </div>
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-folder-open fa-2xl"></i>
+            <a href="#" class="text-2xl">Pemindahan Arsip</a>
          </div>
-      </div>
-      <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-            </svg>
-         </p>
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-clipboard fa-2xl"></i>
+            <a href="#" class="text-2xl">Pemindahan Arsip</a>
+         </div>
       </div>
    </div>
-</div>    
+</div>
 @endsection
