@@ -4,38 +4,27 @@
 
 @section('content')
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <div class="p-4 sm:ml-64">
    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-      <div class="grid grid-cols-3 gap-4 mb-4">
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline">
-        Daftar Permintaan Pinjam
-      </a>
-            </p>
+      <div class="grid grid-cols-4 gap-4 mb-4">
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-folder fa-2xl"></i>
+            <a href="#" class="text-2xl">Daftar Arsip</a>
          </div>
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline">
-        Informasi Arsip
-      </a>
-            </p>
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-file-lines fa-2xl"></i>
+            <a href="#" class="text-2xl">Informasi Arsip</a>
          </div>
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline">
-        Pemindahan Arsip
-      </a>
-            </p>
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-folder-open fa-2xl"></i>
+            <a href="#" class="text-2xl">Pemindahan Arsip</a>
          </div>
-      </div>
-      <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-         <p class="text-2xl text-gray-400 dark:text-gray-500">
-         <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus-shadow-outline">
-        Daftar Arsip
-      </a>
-         </p>
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
+            <i class="fa-solid fa-clipboard fa-2xl"></i>
+            <a href="#" class="text-2xl">Pemindahan Arsip</a>
+         </div>
       </div>
    </div>
-</div>    
+</div>
 @endsection
