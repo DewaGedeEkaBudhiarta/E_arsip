@@ -15,3 +15,6 @@ Route::get('/upload', function() {
 Route::get('/login', function() {
     return view('login-form.index');
 });
+Route::get('/profile', function() {
+    return view('profile.index');
+});
