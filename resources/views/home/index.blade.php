@@ -14,7 +14,7 @@
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-file-lines fa-2xl"></i>
-            <a href="#" class="text-2xl">Informasi Arsip</a>
+            <a href="/informasi" class="text-2xl">Informasi Arsip</a>
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-folder-open fa-2xl"></i>
@@ -22,7 +22,7 @@
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">            
             <i class="fa-solid fa-diagram-project fa-2xl"></i>
-            <a href="#" class="text-2xl">Pemindahan Arsip</a>
+            <a href="/pemindahan" class="text-2xl">Pemindahan Arsip</a>
          </div>
       </div>
    </div>

@@ -9,6 +9,12 @@ Route::get('/', function () {
 Route::get('/arsip-pasi', function() {
     return view('arsip-pasi.index');
 });
+Route::get('/pemindahan', function() {
+    return view('pemindahan-arsip.index');
+});
+Route::get('/informasi', function() {
+    return view('informasi-arsip.index');
+});
 Route::get('/upload', function() {
     return view('uploud-file.index');
 });
