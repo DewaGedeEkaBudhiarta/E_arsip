@@ -10,7 +10,7 @@
       <div class="grid grid-cols-4 gap-4 mb-4">
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-folder fa-2xl"></i>
-            <a href="#" class="text-2xl">Daftar Arsip</a>
+            <a href="/arsip-pasi" class="text-2xl">Daftar Arsip</a>
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-file-lines fa-2xl"></i>
@@ -18,7 +18,7 @@
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-folder-open fa-2xl"></i>
-            <a href="#" class="text-2xl">Uploud Document</a>
+            <a href="/upload" class="text-2xl">Upload Document</a>
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">            
             <i class="fa-solid fa-diagram-project fa-2xl"></i>
