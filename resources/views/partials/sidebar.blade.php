@@ -1,6 +1,5 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-<aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
      <ul class="space-y-2 font-medium">
         <li>
@@ -50,16 +49,16 @@
          </button>
          <div id="dropdown" class="hidden z-10 w-44 bg-white rounded-lg shadow-md dark:bg-gray-800">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                <li>
-                    <a href="/arsip-active" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <span class="flex-1 ms-3 whitespace-nowrap">Arsip Active</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/arsip-inactive" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <span class="flex-1 ms-3 whitespace-nowrap">Arsip Inactive</span>
-                    </a>
-                </li>
+               <li>
+                  <a href="/arsip-active" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
+                     <span class="ms-3">Arsip Active</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="/arsip-inactive" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                     <span class="ms-3">Arsip Inactive</span>
+                  </a>
+               </li>
             </ul>
         </div>
      </li>
