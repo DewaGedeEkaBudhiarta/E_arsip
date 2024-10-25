@@ -1,19 +1,14 @@
-@extends('layouts.app')
-
-@section('title', 'Login')
-
-@section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.13.1/inter.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@0.3.1/dist/tailwind-ui.min.css">
 <style>
   html {
   font-family: Inter var, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.5;
-}
+  }
 
-input:invalid, textarea:invalid, select:invalid {
-  box-shadow: none;
-}
+  input:invalid, textarea:invalid, select:invalid {
+    box-shadow: none;
+  }
 </style>
 
 
@@ -24,7 +19,7 @@ input:invalid, textarea:invalid, select:invalid {
     </h2>
     <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
       Or
-      <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+      <a href="register" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
         create a new account
       </a>
     </p>
@@ -32,7 +27,8 @@ input:invalid, textarea:invalid, select:invalid {
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-      <form>
+      <form method="POST" action="{{ route('login') }}">
+        @csrf
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
             Email address
@@ -50,25 +46,10 @@ input:invalid, textarea:invalid, select:invalid {
           </label>
 
           <div class="mt-1 rounded-md shadow-sm">
-            <input id="password" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
+            <input id="password" type="password" name="password" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 ">
           </div>
 
-        </div>
-
-        <div class="flex items-center justify-between mt-6">
-          <div class="flex items-center">
-            <input id="remember" type="checkbox" class="form-checkbox w-4 h-4 text-indigo-600 transition duration-150 ease-in-out">
-            <label for="remember" class="block ml-2 text-sm text-gray-900 leading-5">
-              Remember
-            </label>
-          </div>
-
-          <div class="text-sm leading-5">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-              Forgot your password?
-            </a>
-          </div>
-        </div>
+        </div>        
 
         <div class="mt-6">
           <span class="block w-full rounded-md shadow-sm">
@@ -81,4 +62,3 @@ input:invalid, textarea:invalid, select:invalid {
     </div>
   </div>
 </div>
-@endsection
