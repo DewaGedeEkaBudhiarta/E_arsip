@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
         Auth::login($user); // Use Auth facade to log in the user
 
-        return redirect('/home');
+        return redirect('/login');
     }
 
     protected function validator(array $data)
