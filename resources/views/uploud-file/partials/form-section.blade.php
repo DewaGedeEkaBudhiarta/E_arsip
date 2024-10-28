@@ -1,5 +1,5 @@
-<form class="max-w-xl mx-auto">
-
+<form action="/upload" method="POST" enctype="multipart/form-data" class="max-w-xl mx-auto">
+  @csrf
   {{--drag and drop file  --}}
   <div class="flex items-center justify-center w-full">
     <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -14,37 +14,36 @@
     </label>
   </div>
 
-  {{-- option dropdown --}}
-  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode klasifikasi</label>
-  <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-    <option>United States</option>
-    <option>Canada</option>
-    <option>France</option>
-    <option>Germany</option>
-  </select>
-
   {{-- input field --}}
+  <div class="grid mb-6">
+    <div>
+        <label for="kode_klasifikasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Klasifikasi</label>
+        <input type="text" id="kode_klasifikasi" name="kode_klasifikasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="BA214" required />
+    </div>
+
     <div class="grid gap-6 mb-6 md:grid-cols-2">
       <div>
-          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Berkas</label>
-          <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+          <label for="no_berkas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Berkas</label>
+          <input type="text" id="no_berkas" name="no_berkas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
       </div>
       <div>
-          <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-          <input type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required />
+          <label for="file_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama_berkas</label>
+          <input type="text" id="file_name" name="file_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required />
       </div>
       <div>
-          <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kurun Waktu</label>
-          <input type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Flowbite" required />
+          <label for="kurun_waktu" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kurun Waktu</label>
+          <input type="text" id="kurun_waktu" name="kurun_waktu" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Flowbite" required />
       </div>  
       <div>
-          <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indeks(kata tangkap/Kata kunci)</label>
-          <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" required />
+          <label for="indeks" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indeks(kata tangkap/Kata kunci)</label>
+          <input type="text" id="indeks" name="indeks" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" required />
       </div>      
     </div>
     
   {{-- text area --}}
-  <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-  <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+  <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+  <textarea id="keterangan" name="keterangan" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+
+  {{-- Submit button --}}
+  <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Upload</button>
 </form>

@@ -45,70 +45,31 @@
           </tr>
       </thead>
       <tbody>
+        {{-- Display uploaded files --}}
+        @forelse ($files as $file)
           <tr class="bg-white border-b">
-              <td class="py-4 px-6">T100</td>
-              <td class="py-4 px-6">1200</td>
-              <td class="py-4 px-6">Teknik Informatika</td>
-              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
-              <td class="py-4 px-6"> </td>
-              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
-              <td class="py-0.5 px-1">
-                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
-                      Edit
-                  </button>
-                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                      Hapus
-                  </button>
-              </td>
+            <td class="py-4 px-6">{{ $file->kode_klasifikasi }}</td>
+            <td class="py-4 px-6">{{ $file->no_berkas }}</td>
+            <td class="py-4 px-6">{{ $file->kurun_waktu }}</td>
+            <td class="py-4 px-6">{{ $file->indeks }}</td>
+            <td class="py-4 px-6">{{ $file->keterangan }}</td>
+            <td class="py-4 px-6">
+                <a href="{{ url('/download/' . $file->id) }}" class="text-blue-500">{{ $file->file_name }}</a>
+            </td>
+            <td class="py-0.5 px-1">
+                <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
+                    Edit
+                </button>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                    Hapus
+                </button>
+            </td>
           </tr>
-          <tr class="bg-white border-b">
-              <td class="py-4 px-6">T200</td>
-              <td class="py-4 px-6">1300</td>
-              <td class="py-4 px-6">Teknik Informatika</td>
-              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
-              <td class="py-4 px-6"> </td>
-              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
-              <td class="py-0.5 px-1">
-                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
-                      Edit
-                  </button>
-                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                      Hapus
-                  </button>
-              </td>
+          @empty
+          <tr>
+                <td class="py-4 px-6 text-center" colspan="7">No files found</td>
           </tr>
-          <tr class="bg-white border-b">
-              <td class="py-4 px-6">T400</td>
-              <td class="py-4 px-6">1500</td>
-              <td class="py-4 px-6">Teknik Informatika</td>
-              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
-              <td class="py-4 px-6"> </td>
-              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
-              <td class="py-0.5 px-1">
-                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
-                      Edit
-                  </button>
-                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                      Hapus
-                  </button>
-              </td>
-          </tr>
-          <tr class="bg-white border-b">
-              <td class="py-4 px-6">T110</td>
-              <td class="py-4 px-6">1210</td>
-              <td class="py-4 px-6">Teknik Informatika</td>
-              <td class="py-4 px-6">22 mar 2024 s.d 22 mar 2024</td>
-              <td class="py-4 px-6"> </td>
-              <td class="py-4 px-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla libero laboriosam sit vel minus dolores non modi totam quae pariatur, nobis nam hic numquam doloribus molestiae alias. Praesentium, velit eos!</td>
-              <td class="py-0.5 px-1">
-                  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
-                      Edit
-                  </button>
-                  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                      Hapus
-                  </button>
-              </td>
-          </tr>
-      </tbody>
+          @endforelse
+      </tbody>      
   </table>
 </div> 
