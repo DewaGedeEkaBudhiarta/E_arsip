@@ -7,19 +7,19 @@ use App\Http\Middleware\AdminMiddleware;
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function() {
+    Route::get('/', function () {
         return view('home.index');
     });
-    Route::get('/profile', function() {
+    Route::get('/profile', function () {
         return view('profile.index');
     });
-    Route::get('/arsip-pasi', function() {
+    Route::get('/arsip-pasi', function () {
         return view('arsip-pasi.index');
     });
-    Route::get('/pemindahan', function() {
+    Route::get('/pemindahan', function () {
         return view('pemindahan-arsip.index');
     });
-    Route::get('/informasi', function() {
+    Route::get('/informasi', function () {
         return view('informasi-arsip.index');
     });
 });
@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Apply admin middleware to restrict access to the upload route
 Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::get('/upload', function() {
+    Route::get('/upload', function () {
         return view('uploud-file.index');
     });
 });
