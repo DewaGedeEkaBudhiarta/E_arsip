@@ -19,6 +19,7 @@ class AdminMiddleware
         if (Auth::check() && Auth::user()->role == 'admin') {
             return $next($request);
         }
+        // return to login page if invalid
         return redirect('/login');
     }
 }
