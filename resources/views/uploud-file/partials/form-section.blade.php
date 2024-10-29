@@ -1,6 +1,6 @@
 <form action="/upload" method="POST" enctype="multipart/form-data" class="max-w-xl mx-auto">
   @csrf
-  {{--drag and drop file  --}}
+  {{-- Drag and drop file --}}
   <div class="flex items-center justify-center w-full">
     <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -10,7 +10,7 @@
             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
             <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
         </div>
-        <input id="dropzone-file" type="file" class="hidden" />
+        <input id="dropzone-file" type="file" name="file" class="hidden" />
     </label>
   </div>
 
@@ -27,7 +27,7 @@
           <input type="text" id="no_berkas" name="no_berkas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
       </div>
       <div>
-          <label for="file_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama_berkas</label>
+          <label for="file_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama berkas</label>
           <input type="text" id="file_name" name="file_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required />
       </div>
       <div>

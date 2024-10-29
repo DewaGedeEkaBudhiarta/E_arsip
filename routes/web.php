@@ -32,6 +32,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/arsip-pasi', [FileController::class, 'showUploadForm']);
     Route::post('/upload', [FileController::class, 'upload']);
     Route::get('/download/{id}', [FileController::class, 'download']);
+    Route::delete('/delete/{id}', [FileController::class, 'delete'])->name('delete');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

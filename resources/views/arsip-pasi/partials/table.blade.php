@@ -50,18 +50,25 @@
           <tr class="bg-white border-b">
             <td class="py-4 px-6">{{ $file->kode_klasifikasi }}</td>
             <td class="py-4 px-6">{{ $file->no_berkas }}</td>
+            <td class="py-4 px-6">{{ $file->file_name }}</td>
             <td class="py-4 px-6">{{ $file->kurun_waktu }}</td>
             <td class="py-4 px-6">{{ $file->indeks }}</td>
-            <td class="py-4 px-6">{{ $file->keterangan }}</td>
-            <td class="py-4 px-6">
-                <a href="{{ url('/download/' . $file->id) }}" class="text-blue-500">{{ $file->file_name }}</a>
-            </td>
+            <td class="py-4 px-6">{{ $file->keterangan }}</td>            
             <td class="py-0.5 px-1">
                 <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
                     Edit
                 </button>
+                <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                        Hapus
+                    </button>
+                </form>
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                    Hapus
+                    <a href="{{ url('/download/' . $file->id) }}"> 
+                    download 
+                    </a>
                 </button>
             </td>
           </tr>
