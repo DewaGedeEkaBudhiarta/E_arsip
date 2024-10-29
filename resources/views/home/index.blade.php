@@ -14,13 +14,13 @@
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-file-lines fa-2xl"></i>
-            <a href="/informasi" class="text-2xl">Informasi Arsip</a>
+            <a href="/informasi" class="text-2xl">Klasifikasi Arsip</a>
          </div>
          <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-folder-open fa-2xl"></i>
             <a href="/upload" class="text-2xl">Upload Document</a>
          </div>
-         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">            
+         <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
             <i class="fa-solid fa-diagram-project fa-2xl"></i>
             <a href="#" class="text-2xl">Pemindahan Arsip</a>
          </div>
