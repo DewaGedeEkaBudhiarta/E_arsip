@@ -21,10 +21,10 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role == 'admin') {
-                return redirect('/home');
+                return redirect('/');
             }
 
-            return redirect('/home');
+            return redirect('/');
         }
 
         return back()->withErrors([
