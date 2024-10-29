@@ -55,6 +55,8 @@
             <td class="py-4 px-6">{{ $file->indeks }}</td>
             <td class="py-4 px-6">{{ $file->keterangan }}</td>            
             <td class="py-0.5 px-1">
+                @if (Auth::user()->role == 'admin')
+                <!-- Section visible only to admin -->
                 <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
                     Edit
                 </button>
@@ -65,6 +67,7 @@
                         Hapus
                     </button>
                 </form>
+                @endif
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
                     <a href="{{ url('/download/' . $file->id) }}"> 
                     download 

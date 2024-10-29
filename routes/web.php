@@ -29,11 +29,11 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/upload', function () {
         return view('uploud-file.index');
     });
-    Route::get('/arsip-pasi', [FileController::class, 'showUploadForm']);
     Route::post('/upload', [FileController::class, 'upload']);
-    Route::get('/download/{id}', [FileController::class, 'download']);
     Route::delete('/delete/{id}', [FileController::class, 'delete'])->name('delete');
 });
+Route::get('/arsip-pasi', [FileController::class, 'showUploadForm']);
+Route::get('/download/{id}', [FileController::class, 'download']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

@@ -40,6 +40,8 @@ class FileController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             // Store the file in the 'public/uploads' directory
             $filePath = $file->storeAs('uploads', $fileName, 'public');
+            // Debugging statement to check the file path
+            //dd($filePath);
             // Check the file upload details
             // dd(['fileName' => $fileName, 'filePath' => $filePath]);
 
