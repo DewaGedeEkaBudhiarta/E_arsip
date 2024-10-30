@@ -21,7 +21,7 @@ class FileController extends Controller
         // dd('Request reached the controller');
 
         $request->validate([
-            'file' => 'required|mimes:png,jpg,jpeg,gif,xlsx,pdf,docx|max:5048',
+            'file' => 'required|mimes:png,jpg,jpeg,gif,xlsx,pdf,docx,pptx|max:5048',
             'kode_klasifikasi' => 'required|string|max:255',
             'no_berkas' => 'required|string|max:255',
             'file_name' => 'required|string|max:255',
@@ -53,7 +53,10 @@ class FileController extends Controller
                 'no_berkas' => $request->no_berkas,
                 'kurun_waktu' => $request->kurun_waktu,
                 'indeks' => $request->indeks,
-                'keterangan' => $request->keterangan
+                'keterangan' => $request->keterangan,
+                'status' => 'active', // Set the status to active
+                'created_at' => now(),
+                'updated_at' => now()
             ];
             // Check the data before inserting into the database
             // dd($data);
@@ -103,5 +106,20 @@ class FileController extends Controller
         DB::table('files')->where('id', $id)->delete();
 
         return back()->with('success', 'File deleted successfully.');
+    }
+
+    // Add a method to update the status of a file
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|string|in:active,inactive'
+        ]);
+
+        DB::table('files')->where('id', $id)->update([
+            'status' => $request->status,
+            'updated_at' => now()
+        ]);
+
+        return redirect()->back()->with('success', 'File status updated successfully.');
     }
 }

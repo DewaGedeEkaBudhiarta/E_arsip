@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FileController;
 use App\Http\Middleware\AdminMiddleware;
-
+use Illuminate\Support\Facades\DB;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
@@ -13,14 +13,19 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::get('/profile', function () {
         return view('profile.index');
-    });        
-
-    Route::get('/pemindahan', function () {
-        return view('pemindahan-arsip.index');
-    });
+    });            
     Route::get('/informasi', function () {
         return view('informasi-arsip.index');
     });
+    Route::get('/pemindahan/table-active', function () {
+        $files = DB::table('files')->where('status', 'active')->get();
+        return view('pemindahan-arsip.index', ['partial' => 'table-active', 'files' => $files]);
+    });    
+    Route::get('/pemindahan/table-inactive', function () {
+        $files = DB::table('files')->where('status', 'inactive')->get();
+        return view('pemindahan-arsip.index', ['partial' => 'table-inactive', 'files' => $files]);
+    });    
+    Route::post('/files/{id}/update-status', [FileController::class, 'updateStatus'])->name('files.update-status');
 });
 
 

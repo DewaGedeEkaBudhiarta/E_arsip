@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Arsip PASI')
+@section('title', 'Pemindahan Arsip')
 
 @section('content')
 <div class="p-4 sm:ml-64">
-  @include('pemindahan-arsip.partials.table')
+  @if ($partial === 'table-active')
+    @include('pemindahan-arsip.partials.table-active', ['files' => $files])
+  @elseif ($partial === 'table-inactive')
+    @include('pemindahan-arsip.partials.table-inactive', ['files' => $files])
+  @endif
 </div>
 
 @endsection
