@@ -40,6 +40,7 @@
               <th class="py-3 px-9">Kurun Waktu</th>
               <th class="py-3 px-6">Indeks(Kata tangkap/Kata Kunci)</th>
               <th class="py-3 px-6">Keterangan</th>
+              <th class="py-3 px-10">classification</th>
               <th class="py-3 px-10">Aksi</th>
           </tr>
       </thead>
@@ -47,32 +48,32 @@
         {{-- Display uploaded files --}}
         @forelse ($files as $file)
           <tr class="bg-white border-b">
+            @if (Auth::user()->role == 'admin' || 
+                (Auth::user()->role == 'user' && $file->classification == 'umum') || 
+                (Auth::user()->role == 'user' && $file->classification == 'terbatas' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()) || 
+                (Auth::user()->role == 'user' && $file->classification == 'rahasia' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
             <td class="py-4 px-6">{{ $file->kode_klasifikasi }}</td>
             <td class="py-4 px-6">{{ $file->no_berkas }}</td>
             <td class="py-4 px-6">{{ $file->file_name }}</td>
             <td class="py-4 px-6">{{ $file->kurun_waktu }}</td>
             <td class="py-4 px-6">{{ $file->indeks }}</td>
-            <td class="py-4 px-6">{{ $file->keterangan }}</td>            
-            <td class="py-0.5 px-1">
-                @if (Auth::user()->role == 'admin')
-                <!-- Section visible only to admin -->
-                <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
-                    Edit
-                </button>
-                <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                        Hapus
-                    </button>
-                </form>
-                @endif
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                    <a href="{{ url('/download/' . $file->id) }}"> 
-                    download 
+            <td class="py-4 px-6">{{ $file->keterangan }}</td>    
+
+                <td class="py-4 px-6">{{ $file->classification }}</td>                
+                <td class="py-0.5 px-1">
+                    <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                            Hapus
+                        </button>
+                    </form>
+                    <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
+                        Download
                     </a>
-                </button>
+                </td>
             </td>
+            @endif
           </tr>
           @empty
           <tr>
