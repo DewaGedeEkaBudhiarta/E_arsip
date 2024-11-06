@@ -50,8 +50,8 @@
             <tr class="bg-white border-b">
                 @if (Auth::user()->role == 'admin' || 
                     (Auth::user()->role == 'user' && $file->classification == 'umum') || 
-                    (Auth::user()->role == 'user' && $file->classification == 'terbatas' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()) || 
-                    (Auth::user()->role == 'user' && $file->classification == 'rahasia' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
+                    (Auth::user()->role == 'user' && $file->user_id == Auth::id()) || 
+                    (Auth::user()->role == 'user' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
                 <td class="py-4 px-6">{{ $file->kode_klasifikasi }}</td>
                 <td class="py-4 px-6">{{ $file->no_berkas }}</td>
                 <td class="py-4 px-6">{{ $file->file_name }}</td>

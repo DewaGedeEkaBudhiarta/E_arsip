@@ -19,29 +19,17 @@ class FileController extends Controller
         } elseif ($user->role == 'user') {
             $files = $files->where(function ($query) use ($user) {
                 $query->where('classification', 'umum')
-                      ->orWhere(function ($query) use ($user) {
-                          $query->where('classification', 'terbatas')
-                                ->where('user_id', $user->id)
-                                ->orWhereIn('id', function ($query) use ($user) {
-                                    $query->select('file_id')
-                                          ->from('file_user')
-                                          ->where('user_id', $user->id)
-                                          ->where('classification', 'terbatas');
-                                });
-                      })
-                      ->orWhere(function ($query) use ($user) {
-                          $query->where('classification', 'rahasia')
-                                ->orWhereIn('id', function ($query) use ($user) {
-                                    $query->select('file_id')
-                                          ->from('file_user')
-                                          ->where('user_id', $user->id)
-                                          ->where('classification', 'rahasia');
-                                });
+                      ->orWhere('user_id', $user->id)
+                      ->orWhereIn('id', function ($query) use ($user) {
+                          $query->select('file_id')
+                                ->from('file_user')
+                                ->where('user_id', $user->id);
                       });
             })->get();
         } else {
             $files = $files->where('classification', 'umum')->get();
         }
+    
         return view('arsip-pasi.index', compact('files'));
     }
 
@@ -60,16 +48,20 @@ class FileController extends Controller
             'keterangan' => 'required|string',
             'classification' => 'required|string|in:umum,terbatas,rahasia'
         ]);
-        // Check the validated data
-        // dd($request->all());
-
+    
         // Store the file in the public/uploads directory using the public disk
         $filePath = $request->file('file')->store('uploads', 'public');
-
+    
+        // Get the original file extension
+        $extension = $request->file('file')->getClientOriginalExtension();
+    
+        // Combine the file name from the form input with the original extension
+        $fileNameWithExtension = $request->file_name . '.' . $extension;
+    
         $fileId = DB::table('files')->insertGetId([
             'kode_klasifikasi' => $request->kode_klasifikasi,
             'no_berkas' => $request->no_berkas,
-            'file_name' => $request->file_name,
+            'file_name' => $fileNameWithExtension, // Use the file name from the form input with the original extension
             'kurun_waktu' => $request->kurun_waktu,
             'indeks' => $request->indeks,
             'keterangan' => $request->keterangan,
@@ -79,7 +71,7 @@ class FileController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-
+    
         // Assign permissions to selected users for 'terbatas' files
         if ($request->classification == 'terbatas' && $request->has('users')) {
             foreach ($request->users as $userId) {
@@ -92,6 +84,7 @@ class FileController extends Controller
                 ]);
             }
         }
+    
         return redirect()->back()->with('success', 'File uploaded successfully.');
     }
 
@@ -110,7 +103,10 @@ class FileController extends Controller
             return abort(404, 'File not found.');
         }
 
-        return response()->download($filePath, $file->file_name);
+        // Use the original file name with extension
+        $fileName = $file->file_name;
+
+        return response()->download($filePath, $fileName);
     }
 
     public function delete($id)

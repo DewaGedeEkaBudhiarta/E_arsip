@@ -50,15 +50,14 @@
           <tr class="bg-white border-b">
             @if (Auth::user()->role == 'admin' || 
                 (Auth::user()->role == 'user' && $file->classification == 'umum') || 
-                (Auth::user()->role == 'user' && $file->classification == 'terbatas' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()) || 
-                (Auth::user()->role == 'user' && $file->classification == 'rahasia' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
+                (Auth::user()->role == 'user' && $file->user_id == Auth::id()) || 
+                (Auth::user()->role == 'user' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
             <td class="py-4 px-6">{{ $file->kode_klasifikasi }}</td>
             <td class="py-4 px-6">{{ $file->no_berkas }}</td>
             <td class="py-4 px-6">{{ $file->file_name }}</td>
             <td class="py-4 px-6">{{ $file->kurun_waktu }}</td>
             <td class="py-4 px-6">{{ $file->indeks }}</td>
             <td class="py-4 px-6">{{ $file->keterangan }}</td>    
-
                 <td class="py-4 px-6">{{ $file->classification }}</td>                
                 <td class="py-0.5 px-1">
                     <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;">
