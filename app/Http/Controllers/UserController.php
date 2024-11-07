@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = DB::table('users')->get();
+        $users = DB::table('users')->get(); // Fetch users to display in the form
         $files = DB::table('files')->get(); // Fetch files to display in the form
         return view('users-list.index', compact('users', 'files'));
     }
@@ -21,13 +21,21 @@ class UserController extends Controller
             'classification' => 'required|string|in:terbatas,rahasia'
         ]);
 
-        DB::table('file_user')->insert([
-            'file_id' => $request->file_id,
-            'user_id' => $userId,
-            'classification' => $request->classification,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $existingPermission = DB::table('file_user')
+            ->where('file_id', $request->file_id)
+            ->where('user_id', $userId)
+            ->where('classification', $request->classification)
+            ->first();
+
+        if (!$existingPermission) {
+            DB::table('file_user')->insert([
+                'file_id' => $request->file_id,
+                'user_id' => $userId,
+                'classification' => $request->classification,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Permission granted successfully.');
     }
