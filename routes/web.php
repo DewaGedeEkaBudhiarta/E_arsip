@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\KlasifikasiArsipController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\DB;
@@ -13,12 +14,7 @@ Route::middleware(['auth'])->group(function () {
         return view('home.index');
     });
         
-    Route::get('/informasi', function () {
-        return view('informasi-arsip.index');
-    });
-
-    Route::get('/arsip-pasi', [FileController::class, 'showUploadForm']);
-    Route::get('/download/{id}', [FileController::class, 'download'])->name('files.download');
+    Route::get('/klasifikasi-arsip', [KlasifikasiArsipController::class, 'index']);
     
     Route::get('/pemindahan/table-active', function () {
         $files = DB::table('files')->where('status', 'active')->get();
@@ -30,10 +26,10 @@ Route::middleware(['auth'])->group(function () {
     });    
     Route::post('/files/{id}/update-status', [FileController::class, 'updateStatus'])->name('files.update-status');
 
-    Route::get('/upload', function () {
-        return view('uploud-file.index');
-    });
-    Route::post('/upload', [FileController::class, 'upload']);
+    Route::get('/arsip-pasi', [FileController::class, 'index'])->name('arsip-pasi.index');
+    Route::get('/download/{id}', [FileController::class, 'download'])->name('files.download');
+    Route::get('/upload', [FileController::class, 'showUploadForm'])->name('upload.form');
+    Route::post('/upload', [FileController::class, 'upload'])->name('upload');
     Route::delete('/delete/{id}', [FileController::class, 'delete'])->name('delete');
 });
 
