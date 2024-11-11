@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Storage;
 // In Laravel, there are different ways to interact with the database. The approach you mentioned, using Eloquent models and migrations, is one common way. However, in the code you provided, you are using the Query Builder to interact with the database directly without an Eloquent model
 class FileController extends Controller
 {
-    public function showUploadForm()
+    public function index()
     {
         $user = Auth::user();
         $files = DB::table('files');
         // dd($files); // Debugging line to check the content of $files
+
         if ($user->role == 'admin') {
             $files = $files->get();
         } elseif ($user->role == 'user') {
@@ -29,8 +30,18 @@ class FileController extends Controller
         } else {
             $files = $files->where('classification', 'umum')->get();
         }
-    
+
         return view('arsip-pasi.index', compact('files'));
+    }
+    public function showUploadForm()
+    {
+        // Fetch unique Transaksi values
+        $transaksiList = DB::table('klasifikasi_arsip')->select('Transaksi')->distinct()->get();
+        
+        // Fetch all records for dynamic Indeks change
+        $klasifikasiArsip = DB::table('klasifikasi_arsip')->get();
+        
+        return view('uploud-file.index', compact('transaksiList', 'klasifikasiArsip'));
     }
 
     public function upload(Request $request)
@@ -39,24 +50,28 @@ class FileController extends Controller
         // dd('Request reached the controller');
 
         $request->validate([
-            'file' => 'required|mimes:png,jpg,jpeg,gif,xlsx,pdf,docx,pptx|max:5048',
+            'file' => 'required|mimes:png,jpg,jpeg,xlsx,pdf,docx,pptx,csv,text/csv|max:15048',
             'kode_klasifikasi' => 'required|string|max:255',
             'no_berkas' => 'required|string|max:255',
             'file_name' => 'required|string|max:255',
             'kurun_waktu' => 'required|string|max:255',
-            'indeks' => 'required|string|max:255',
+            'indeks' => 'nullable|string|max:255',
             'keterangan' => 'required|string',
             'classification' => 'required|string|in:umum,terbatas,rahasia'
         ]);
+        // dd('Validation passed', $request->all());
     
         // Store the file in the public/uploads directory using the public disk
         $filePath = $request->file('file')->store('uploads', 'public');
+        // dd('File stored at: ' . $filePath);
     
         // Get the original file extension
         $extension = $request->file('file')->getClientOriginalExtension();
+        // dd('File extension: ' . $extension);
     
         // Combine the file name from the form input with the original extension
         $fileNameWithExtension = $request->file_name . '.' . $extension;
+        // dd('File name with extension: ' . $fileNameWithExtension);
     
         $fileId = DB::table('files')->insertGetId([
             'kode_klasifikasi' => $request->kode_klasifikasi,
@@ -71,6 +86,7 @@ class FileController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        // dd('File ID: ' . $fileId);
     
         // Assign permissions to selected users for 'terbatas' files
         if ($request->classification == 'terbatas' && $request->has('users')) {
@@ -85,7 +101,7 @@ class FileController extends Controller
             }
         }
     
-        return redirect()->back()->with('success', 'File uploaded successfully.');
+        return redirect()->route('arsip-pasi.index')->with('success', 'File uploaded successfully.');
     }
 
     public function download($id)

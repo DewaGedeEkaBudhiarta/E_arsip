@@ -19,13 +19,13 @@
         <tbody>
             @foreach($klasifikasiArsip as $arsip)
                 <tr>
-                    <td class="py-3 px-6">{{ $arsip->fungsi ?? '' }}</td>
-                    <td class="py-3 px-6">{{ $arsip->primer ?? '' }}</td>
-                    <td class="py-3 px-6">{{ $arsip->kegiatan ?? '' }}</td>
-                    <td class="py-3 px-6">{{ $arsip->sekunder ?? '' }}</td>
-                    <td class="py-3 px-6">{{ $arsip->transaksi ?? '' }}</td>
-                    <td class="py-3 px-6">{{ $arsip->tersier ?? '' }}</td>
-                    <td class="py-3 px-6">{{ $arsip->indeks ?? '' }}</td>
+                    <td class="py-3 px-6">{{ $arsip->Fungsi ?? '' }}</td>
+                    <td class="py-3 px-6">{{ $arsip->Primer ?? '' }}</td>
+                    <td class="py-3 px-6">{{ $arsip->Kegiatan ?? '' }}</td>
+                    <td class="py-3 px-6">{{ $arsip->Sekunder ?? '' }}</td>
+                    <td class="py-3 px-6">{{ $arsip->Transaksi ?? '' }}</td>
+                    <td class="py-3 px-6">{{ $arsip->Tersier ?? '' }}</td>
+                    <td class="py-3 px-6">{{ $arsip->Indeks ?? '' }}</td>
                 </tr>
             @endforeach
         </tbody>
