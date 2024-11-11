@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\KlasifikasiArsipController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +14,7 @@ Route::middleware(['auth'])->group(function () {
         return view('home.index');
     });
         
-    Route::get('/informasi', function () {
-        return view('informasi-arsip.index');
-    });
+    Route::get('/klasifikasi-arsip', [KlasifikasiArsipController::class, 'index']);
 
     Route::get('/arsip-pasi', [FileController::class, 'showUploadForm']);
     Route::get('/download/{id}', [FileController::class, 'download'])->name('files.download');
