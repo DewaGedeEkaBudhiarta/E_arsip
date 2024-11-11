@@ -4,22 +4,14 @@
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-                <th class="py-3 px-6">Kode Klasifikasi</th>
-                <th class="py-3 px-6">Nama Klasifikasi</th>
-                <th class="py-3 px-6">Deskripsi Klasifikasi</th>
+                <th class="py-3 px-6">Fungsi</th>
+                <th class="py-3 px-6">Primer</th>
+                <th class="py-3 px-6">Kegiatan</th>
+                <th class="py-3 px-6">Sekunder</th>
+                <th class="py-3 px-6">Transaksi</th>
+                <th class="py-3 px-6">Tersier</th>
+                <th class="py-3 px-6">Indeks</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="bg-white border-b">
-                <td class="py-4 px-6">PR.00.00</td>
-                <td class="py-4 px-6">Rencana Pembangunan Jangka Panjang (RPJP)</td>
-                <td class="py-4 px-6">Naskah yang berkaitan dengan Rencana Pembangunan Jangka Panjang (RPJP) </td>
-            </tr>
-            <tr class="bg-white border-b">
-                <td class="py-4 px-6">PR.00.01 </td>
-                <td class="py-4 px-6">Rencana Pembangunan Jangka Menengah (RPJMN) </td>
-                <td class="py-4 px-6">Naskah yang berkaitan dengan Rencana Pembangunan Jangka Menengah (RPJMN) </td>
-            </tr>
-        </tbody>
     </table>
 </div>
