@@ -22,4 +22,5 @@ class KlasifikasiArsip extends Model
         'Tersier',
         'Indeks'
     ];
+    public $timestamps = true;
 }

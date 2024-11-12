@@ -14,7 +14,9 @@ Route::middleware(['auth'])->group(function () {
         return view('home.index');
     });
         
-    Route::get('/klasifikasi-arsip', [KlasifikasiArsipController::class, 'index']);
+    Route::get('/informasi-arsip', [KlasifikasiArsipController::class, 'index'])->name('informasi-arsip.index');
+    Route::post('/informasi-arsip', [KlasifikasiArsipController::class, 'store'])->name('informasi-arsip.store');
+    Route::delete('/informasi-arsip/{id}', [KlasifikasiArsipController::class, 'destroy'])->name('informasi-arsip.destroy');
     
     Route::get('/pemindahan/table-active', function () {
         $files = DB::table('files')->where('status', 'active')->get();
