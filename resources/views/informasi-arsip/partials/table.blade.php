@@ -1,9 +1,17 @@
-<div class="container mx-auto p-4">
+<div class="container mx-auto">
     <h1 class="text-3xl font-bold mb-4">Klasifikasi Arsip</h1>
 
     {{-- Debugging: Check if data is being passed --}}
     {{-- {{ dd($klasifikasiArsip) }} --}}
+    <div class="flex justify-between mb-4">
+        <a href="{{ route('informasi-arsip.index', ['action' => 'create']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            + Tambah Bidang Pendidikan
+        </a>
+    </div>
 
+    <div class="flex items-center mb-4">        
+        <input type="text" id="search-input" class="ml-2 w-full pl-10 text-sm text-gray-700" placeholder="Cari Bidang Pendidikan">
+    </div>
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
@@ -14,6 +22,7 @@
                 <th class="py-3 px-6">Transaksi</th>
                 <th class="py-3 px-6">Tersier</th>
                 <th class="py-3 px-6">Indeks</th>
+                <th class="py-3 px-10">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +35,16 @@
                     <td class="py-3 px-6">{{ $arsip->Transaksi ?? '' }}</td>
                     <td class="py-3 px-6">{{ $arsip->Tersier ?? '' }}</td>
                     <td class="py-3 px-6">{{ $arsip->Indeks ?? '' }}</td>
+                    {{-- delete using Transaksi as unique identifier --}}
+                    <td class="py-0.5 px-1">
+                        <form action="{{ route('informasi-arsip.destroy', $arsip->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                                Hapus
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

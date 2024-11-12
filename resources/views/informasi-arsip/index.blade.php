@@ -3,8 +3,13 @@
 @section('title', 'Arsip PASI')
 
 @section('content')
-<div class="p-4 sm:ml-64">
-  @include('informasi-arsip.partials.table')
+<div class="p-4 sm:ml-64">  
+  @if(request()->has('action') && request()->get('action') == 'create')
+      @include('informasi-arsip.partials.add-klasifikasi')
+  @else
+      {{-- Include the table displaying the data --}}
+      @include('informasi-arsip.partials.table')
+  @endif
 </div>
 
 @endsection
