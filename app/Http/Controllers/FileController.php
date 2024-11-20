@@ -19,7 +19,7 @@ class FileController extends Controller
             $files = $files->get();
         } elseif ($user->role == 'user') {
             $files = $files->where(function ($query) use ($user) {
-                $query->where('classification', 'umum')
+                $query->where('classification', 'terbuka')
                       ->orWhere('user_id', $user->id)
                       ->orWhereIn('id', function ($query) use ($user) {
                           $query->select('file_id')
@@ -28,7 +28,7 @@ class FileController extends Controller
                       });
             })->get();
         } else {
-            $files = $files->where('classification', 'umum')->get();
+            $files = $files->where('classification', 'terbuka')->get();
         }
 
         return view('arsip-pasi.index', compact('files'));
@@ -57,7 +57,7 @@ class FileController extends Controller
             'kurun_waktu' => 'required|string|max:255',
             'indeks' => 'nullable|string|max:255',
             'keterangan' => 'required|string',
-            'classification' => 'required|string|in:umum,terbatas,rahasia'
+            'classification' => 'required|string|in:terbuka,terbatas,tertutup'
         ]);
         // dd('Validation passed', $request->all());
     
@@ -88,18 +88,19 @@ class FileController extends Controller
         ]);
         // dd('File ID: ' . $fileId);
     
+        // tes, jika berhasil give permision maka hapus
         // Assign permissions to selected users for 'terbatas' files
-        if ($request->classification == 'terbatas' && $request->has('users')) {
-            foreach ($request->users as $userId) {
-                DB::table('file_user')->insert([
-                    'file_id' => $fileId,
-                    'user_id' => $userId,
-                    'classification' => 'terbatas',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]);
-            }
-        }
+        // if ($request->classification == 'terbatas' && $request->has('users')) {
+        //     foreach ($request->users as $userId) {
+        //         DB::table('file_user')->insert([
+        //             'file_id' => $fileId,
+        //             'user_id' => $userId,
+        //             'classification' => 'terbatas',
+        //             'created_at' => now(),
+        //             'updated_at' => now()
+        //         ]);
+        //     }
+        // }
     
         return redirect()->route('arsip-pasi.index')->with('success', 'File uploaded successfully.');
     }
@@ -156,7 +157,7 @@ class FileController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|string|in:active,inactive'
+            'status' => 'required|string|in:active,inactive,usul_musnah'
         ]);
 
         DB::table('files')->where('id', $id)->update([

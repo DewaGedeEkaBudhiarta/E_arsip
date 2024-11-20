@@ -39,17 +39,12 @@
                         <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-0.5 px-1 rounded">
                             Set Aktif
                         </button>
-                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
+                        
+                        <input type="hidden" name="status" value="usul_musnah">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
                             Usul Musnah
-                        </a>
-                    </form>
-                    <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                            Hapus
                         </button>
-                    </form>
+                    </form>                    
                     <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
                         Download
                     </a>

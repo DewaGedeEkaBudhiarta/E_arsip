@@ -14,11 +14,12 @@ class UserController extends Controller
         return view('users-list.index', compact('users', 'files'));
     }
 
+    // Assign permissions to selected users for 'terbatas' and 'rahasia' files
     public function givePermission(Request $request, $userId)
     {
         $request->validate([
             'file_id' => 'required|integer|exists:files,id',
-            'classification' => 'required|string|in:terbatas,rahasia'
+            'classification' => 'required|string|in:terbatas,tertutup'
         ]);
 
         $existingPermission = DB::table('file_user')
@@ -44,7 +45,7 @@ class UserController extends Controller
     {
         $request->validate([
             'file_id' => 'required|integer|exists:files,id',
-            'classification' => 'required|string|in:terbatas,rahasia'
+            'classification' => 'required|string|in:terbatas,tertutup'
         ]);
 
         DB::table('file_user')

@@ -19,7 +19,7 @@
                 <td class="border px-4 py-2">
                     <select name="classification" class="classification-dropdown bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" onchange="filterFiles(this, 'fileDropdown{{ $user->id }}')">
                         <option value="terbatas">Terbatas</option>
-                        <option value="rahasia">Rahasia</option>
+                        <option value="tertutup">Rahasia</option>
                     </select>
                     <select id="fileDropdown{{ $user->id }}" name="file_id" class="file-dropdown bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2">
                         @foreach ($files as $file)
