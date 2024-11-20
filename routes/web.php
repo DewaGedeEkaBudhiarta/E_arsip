@@ -13,15 +13,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('home.index');
     });
-        
+
+    Route::get('/rekap', function () {
+        return view('rekapitulasi.index');
+    });
+
     Route::get('/informasi-arsip', [KlasifikasiArsipController::class, 'index'])->name('informasi-arsip.index');
     Route::post('/informasi-arsip', [KlasifikasiArsipController::class, 'store'])->name('informasi-arsip.store');
     Route::delete('/informasi-arsip/{id}', [KlasifikasiArsipController::class, 'destroy'])->name('informasi-arsip.destroy');
-    
+
     Route::get('/pemindahan/table-active', function () {
         $files = DB::table('files')->where('status', 'active')->get();
         return view('pemindahan-arsip.index', ['partial' => 'table-active', 'files' => $files]);
-    });    
+    });
     Route::get('/pemindahan/table-inactive', function () {
         $files = DB::table('files')->where('status', 'inactive')->get();
         return view('pemindahan-arsip.index', ['partial' => 'table-inactive', 'files' => $files]);
@@ -29,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pemindahan/tabel-usul-musnah', function () {
         $files = DB::table('files')->where('status', 'usul_musnah')->get();
         return view('pemindahan-arsip.index', ['partial' => 'tabel-usul-musnah', 'files' => $files]);
+
     });
     Route::post('/files/{id}/update-status', [FileController::class, 'updateStatus'])->name('files.update-status');
 
