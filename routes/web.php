@@ -26,6 +26,10 @@ Route::middleware(['auth'])->group(function () {
         $files = DB::table('files')->where('status', 'inactive')->get();
         return view('pemindahan-arsip.index', ['partial' => 'table-inactive', 'files' => $files]);
     });    
+    Route::get('/pemindahan/tabel-usul-musnah', function () {
+        $files = DB::table('files')->where('status', 'usul_musnah')->get();
+        return view('pemindahan-arsip.index', ['partial' => 'tabel-usul-musnah', 'files' => $files]);
+    });
     Route::post('/files/{id}/update-status', [FileController::class, 'updateStatus'])->name('files.update-status');
 
     Route::get('/arsip-pasi', [FileController::class, 'index'])->name('arsip-pasi.index');
