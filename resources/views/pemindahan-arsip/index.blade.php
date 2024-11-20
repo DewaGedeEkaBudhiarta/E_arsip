@@ -5,9 +5,11 @@
 @section('content')
 <div class="p-4 sm:ml-64">
   @if ($partial === 'table-active')
-    @include('pemindahan-arsip.partials.table-active', ['files' => $files])
+  @include('pemindahan-arsip.partials.table-active', ['files' => $files])
   @elseif ($partial === 'table-inactive')
-    @include('pemindahan-arsip.partials.table-inactive', ['files' => $files])
+  @include('pemindahan-arsip.partials.table-inactive', ['files' => $files])
+  @elseif ($partial === 'tabel-usulmusnah')
+  @include('pemindahan-arsip.partials.tabel-usulmusnah', ['files' => $files])
   @endif
 </div>
 
