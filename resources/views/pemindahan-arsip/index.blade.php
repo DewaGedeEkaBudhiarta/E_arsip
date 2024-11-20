@@ -8,8 +8,8 @@
   @include('pemindahan-arsip.partials.table-active', ['files' => $files])
   @elseif ($partial === 'table-inactive')
   @include('pemindahan-arsip.partials.table-inactive', ['files' => $files])
-  @elseif ($partial === 'tabel-usulmusnah')
-  @include('pemindahan-arsip.partials.tabel-usulmusnah', ['files' => $files])
+  @elseif ($partial === 'tabel-usul-musnah')
+  @include('pemindahan-arsip.partials.tabel-usul-musnah', ['files' => $files])
   @endif
 </div>
 

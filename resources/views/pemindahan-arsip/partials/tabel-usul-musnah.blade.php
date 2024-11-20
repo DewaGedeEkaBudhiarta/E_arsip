@@ -44,7 +44,14 @@
                         <input type="hidden" name="status" value="inactive">
                         <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
                             Set Inaktif
-
+                        </button>
+                    </form>                    
+                    
+                    <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                            Hapus
                         </button>
                     </form>
                     <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
