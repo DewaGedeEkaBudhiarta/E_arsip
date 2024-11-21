@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -12,6 +13,12 @@ class UserController extends Controller
         $users = DB::table('users')->get(); // Fetch users to display in the form
         $files = DB::table('files')->get(); // Fetch files to display in the form
         return view('users-list.index', compact('users', 'files'));
+    }
+    // method to call current user name in sidebar
+    public function showNameSidebar()
+    {
+        $currentUser = Auth::user(); // Fetch the current authenticated user
+        return view('partials.sidebar', compact('currentUser'));
     }
 
     // Assign permissions to selected users for 'terbatas' and 'rahasia' files

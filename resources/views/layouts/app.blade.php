@@ -20,9 +20,14 @@
 </head>
 
 <body>
+  @php
+    $currentUser = Auth::user();
+  @endphp
 
-  @include('partials.sidebar')
+  @include('partials.sidebar', ['currentUser' => $currentUser])
+
   @yield('content')
+
   @yield('scripts')
 
 </body>
