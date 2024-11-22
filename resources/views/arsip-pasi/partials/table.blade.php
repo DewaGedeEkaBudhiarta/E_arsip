@@ -49,7 +49,7 @@
                     <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
                         Download
                     </a>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
+                    <a href="{{ route('files.edit', $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
                         Edit
                     </a>
                 </td>
