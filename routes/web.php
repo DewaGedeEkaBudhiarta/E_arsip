@@ -42,6 +42,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/upload', [FileController::class, 'showUploadForm'])->name('upload.form');
     Route::post('/upload', [FileController::class, 'upload'])->name('upload');
     Route::delete('/delete/{id}', [FileController::class, 'delete'])->name('delete');
+
+    Route::get('/files/{id}/edit', [FileController::class, 'edit'])->name('files.edit');
+    Route::post('/files/{id}/update', [FileController::class, 'update'])->name('files.update');
 });
 
 

@@ -155,4 +155,56 @@ class FileController extends Controller
         return redirect()->back()->with('success', 'File status updated successfully.');
     }
     
+    public function edit($id)
+    {
+        $file = DB::table('files')->find($id);
+        $transaksiList = DB::table('klasifikasi_arsip')
+                            ->select('id', 'Transaksi')
+                            ->distinct()
+                            ->whereNotNull('Transaksi')
+                            ->where('Transaksi', '!=', '')
+                            ->get(); // Fetch unique Transaksi values that are not empty or null
+        $klasifikasiArsip = DB::table('klasifikasi_arsip')->get(); // Fetch all klasifikasi_arsip data
+        return view('uploud-file.partials.update-file', compact('file', 'transaksiList', 'klasifikasiArsip'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'file' => 'nullable|mimes:png,jpg,jpeg,xlsx,pdf,docx,pptx,csv,text/csv|max:15048',
+            'kode_klasifikasi' => 'required|string|max:255',
+            'no_berkas' => 'required|string|max:255',
+            'file_name' => 'required|string|max:255',
+            'kurun_waktu' => 'required|string|max:255',
+            'indeks' => 'nullable|string|max:255',
+            'keterangan' => 'required|string',
+            'classification' => 'required|string|in:terbuka,terbatas,tertutup',
+            'kelas' => 'required|string|in:umum,vital'
+        ]);
+
+        $fileData = [
+            'kode_klasifikasi' => $request->kode_klasifikasi,
+            'no_berkas' => $request->no_berkas,
+            'file_name' => $request->file_name,
+            'kurun_waktu' => $request->kurun_waktu,
+            'indeks' => $request->indeks,
+            'keterangan' => $request->keterangan,
+            'classification' => $request->classification,
+            'kelas' => $request->kelas,
+            'updated_at' => now(),
+        ];
+
+        if ($request->hasFile('file')) {
+            // Store the file in the public/uploads directory using the public disk
+            $filePath = $request->file('file')->store('uploads', 'public');
+            $extension = $request->file('file')->getClientOriginalExtension();
+            $fileNameWithExtension = $request->file_name . '.' . $extension;
+            $fileData['file_path'] = $filePath;
+            $fileData['file_name_with_extension'] = $fileNameWithExtension;
+        }
+
+        DB::table('files')->where('id', $id)->update($fileData);
+
+        return redirect()->route('arsip-pasi.index')->with('success', 'File updated successfully.');
+    }
 }

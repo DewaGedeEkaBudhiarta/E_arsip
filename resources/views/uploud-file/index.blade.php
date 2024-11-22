@@ -31,6 +31,7 @@
         dropzoneText.innerHTML = '<p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">File ready to upload:</span> ' + fileName + '</p>';
     });
 
+    // auto select the indeks field based on the selected transaksi
     document.getElementById('kode_klasifikasi').addEventListener('change', function() {
         var transaksi = this.value;
         var indeksField = document.getElementById('indeks');
