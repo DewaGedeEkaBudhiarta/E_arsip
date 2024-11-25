@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ActiveFilesExport;
+use App\Exports\FilesExport;
+use App\Exports\InactiveFilesExport;
+use App\Exports\UsulMusnahFilesExport;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+
 // In Laravel, there are different ways to interact with the database. The approach you mentioned, using Eloquent models and migrations, is one common way. However, in the code you provided, you are using the Query Builder to interact with the database directly without an Eloquent model
 class FileController extends Controller
 {
@@ -88,7 +95,18 @@ class FileController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);        
-    
+        
+        // Log the activity
+        ActivityLog::create([
+            'nomor_berkas' => $request->no_berkas,
+            'nama_berkas' => $request->file_name,
+            'user_pengakses' => Auth::user()->name,
+            'jam_ubah_create' => now(),
+            'tanggal' => now()->toDateString(),
+            'status' => 'completed',
+            'action' => 'created',
+        ]);
+
         return redirect()->route('arsip-pasi.index')->with('success', 'File uploaded successfully.');
     }
 
@@ -146,13 +164,32 @@ class FileController extends Controller
         $request->validate([
             'status' => 'required|string|in:active,inactive,usul_musnah'
         ]);
-
-        DB::table('files')->where('id', $id)->update([
-            'status' => $request->status,
-            'updated_at' => now()
-        ]);
-
-        return redirect()->back()->with('success', 'File status updated successfully.');
+    
+        // Fetch the file details
+        $file = DB::table('files')->find($id);
+    
+        if ($file) {
+            // Update the file status
+            DB::table('files')->where('id', $id)->update([
+                'status' => $request->status,
+                'updated_at' => now()
+            ]);
+    
+            // Log the activity
+            ActivityLog::create([
+                'nomor_berkas' => $file->no_berkas,
+                'nama_berkas' => $file->file_name,
+                'user_pengakses' => Auth::user()->name,
+                'jam_ubah_create' => now(),
+                'tanggal' => now()->toDateString(),
+                'status' => 'completed',
+                'action' => 'status updated to ' . $request->status,
+            ]);
+    
+            return redirect()->back()->with('success', 'File status updated successfully.');
+        }
+    
+        return redirect()->back()->with('error', 'File not found.');
     }
     
     public function edit($id)
@@ -205,6 +242,38 @@ class FileController extends Controller
 
         DB::table('files')->where('id', $id)->update($fileData);
 
+        // Log the activity
+        ActivityLog::create([
+            'nomor_berkas' => $request->no_berkas,
+            'nama_berkas' => $request->file_name,
+            'user_pengakses' => Auth::user()->name,
+            'jam_ubah_create' => now(),
+            'tanggal' => now()->toDateString(),
+            'status' => 'completed',
+            'action' => 'updated',
+        ]);
+
         return redirect()->route('arsip-pasi.index')->with('success', 'File updated successfully.');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FilesExport, 'files.xlsx');
+    }
+    
+    public function exportActive()
+    {
+        return Excel::download(new ActiveFilesExport, 'active_files.xlsx');
+    }
+    
+    public function exportInactive()
+    {
+        return Excel::download(new InactiveFilesExport, 'inactive_files.xlsx');
+    }
+    
+    public function exportUsulMusnah()
+    {
+        return Excel::download(new UsulMusnahFilesExport, 'UsulMusnah_files.xlsx');
+
     }
 }

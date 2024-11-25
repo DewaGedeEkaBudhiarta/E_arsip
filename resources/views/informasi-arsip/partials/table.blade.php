@@ -44,6 +44,9 @@
                                 Hapus
                             </button>
                         </form>
+                        <a href="{{ route('informasi.edit', $arsip->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
+                            Edit
+                        </a>
                     </td>
                 </tr>
             @endforeach
