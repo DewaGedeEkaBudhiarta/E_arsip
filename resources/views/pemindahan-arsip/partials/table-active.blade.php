@@ -1,11 +1,25 @@
 <div class="container mx-auto p-4">
+    {{-- session for sucsses or error  --}}
+    <div class="container mx-auto p-4">
+        @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
+    
+        @if(session('error'))
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
+
     <h1 class="text-3xl font-bold mb-4">Daftar Arsip Aktif</h1>
 
     <div class="flex justify-between mb-4">
         <a href="{{ route('upload.form') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             + Unggah Arsip
         </a>
-        <a href="{{ route('pemindahan.export-active') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{ route('pemindahan.export-active') }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             Export Active Files to Excel
         </a>
     </div>
@@ -16,6 +30,7 @@
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
+                <th class="py-3 px-6">No</th>
                 <th class="py-3 px-6">Kode Klasifikasi</th>
                 <th class="py-3 px-6">No Berkas</th>
                 <th class="py-3 px-6">Nama</th>
@@ -35,6 +50,7 @@
                 (Auth::user()->role == 'user' && $file->classification == 'terbuka') ||
                 (Auth::user()->role == 'user' && $file->user_id == Auth::id()) ||
                 (Auth::user()->role == 'user' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
+                <td class="py-4 px-6">{{ $loop->iteration }}</td>
                 <td class="py-4 px-6">{{ $file->kode_klasifikasi }}</td>
                 <td class="py-4 px-6">{{ $file->no_berkas }}</td>
                 <td class="py-4 px-6">{{ $file->file_name }}</td>
@@ -49,7 +65,6 @@
                         <input type="hidden" name="status" value="inactive">
                         <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 rounded">
                             Set Inaktif
-
                         </button>
                     </form>
                     <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">

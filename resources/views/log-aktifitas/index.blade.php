@@ -41,5 +41,19 @@
   document.getElementById("search-input").addEventListener("input", filterTable);
   // Filter the table initially when the page loads
   filterTable();
+
+  // Hide success and error messages after 5 seconds
+  document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            let successMessage = document.querySelector('.bg-green-500');
+            let errorMessage = document.querySelector('.bg-red-500');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+        }, 5000); // 5000 milliseconds = 5 seconds
+    });    
 </script>
 @endsection

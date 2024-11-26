@@ -1,4 +1,18 @@
 <div class="container mx-auto">
+    {{-- session for sucsses or error  --}}
+    <div class="container mx-auto p-4">
+        @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
+    
+        @if(session('error'))
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
+
     <h1 class="text-3xl font-bold mb-4">Klasifikasi Arsip</h1>
 
     {{-- Debugging: Check if data is being passed --}}
@@ -15,6 +29,7 @@
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
+                <th class="py-3 px-6">No</th>
                 <th class="py-3 px-6">Fungsi</th>
                 <th class="py-3 px-6">Primer</th>
                 <th class="py-3 px-6">Kegiatan</th>
@@ -28,6 +43,7 @@
         <tbody>
             @foreach($klasifikasiArsip as $arsip)
                 <tr>
+                    <td class="py-4 px-6">{{ $loop->iteration }}</td>
                     <td class="py-3 px-6">{{ $arsip->Fungsi ?? '' }}</td>
                     <td class="py-3 px-6">{{ $arsip->Primer ?? '' }}</td>
                     <td class="py-3 px-6">{{ $arsip->Kegiatan ?? '' }}</td>
@@ -40,7 +56,7 @@
                         <form action="{{ route('informasi-arsip.destroy', $arsip->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
                                 Hapus
                             </button>
                         </form>

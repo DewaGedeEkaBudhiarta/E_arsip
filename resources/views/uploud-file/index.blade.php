@@ -44,5 +44,33 @@
             indeksField.value = '';
         }
     });
+
+    // Hide success and error messages after 5 seconds
+  document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            let successMessage = document.querySelector('.bg-green-500');
+            let errorMessage = document.querySelector('.bg-red-500');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+        }, 5000); // 5000 milliseconds = 5 seconds
+    });
+
+    // Confirm before deleting a file
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForms = document.querySelectorAll('.delete-form');
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const confirmed = confirm('Are you sure you want to delete this file?');
+                if (confirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
 </script>
 @endsection

@@ -1,4 +1,18 @@
 <div class="container mx-auto p-4"> 
+    {{-- session for sucsses or error  --}}
+    <div class="container mx-auto p-4">
+        @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
+    
+        @if(session('error'))
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
+        
   <form action="{{ route('informasi-arsip.store') }}" method="POST" class="mb-4">
     @csrf
     <div class="grid gap-6 mb-6 md:grid-cols-2">

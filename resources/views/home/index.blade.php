@@ -27,7 +27,7 @@
             </div>
             <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
                <i class="fa-solid fa-clipboard fa-2xl"></i>
-               <a href="/#" class="text-2xl">Aktivitas</a>
+               <a href="/activity-logs" class="text-2xl">Aktivitas</a>
             </div>
             <div class="bg-slate-300 p-6 rounded-lg flex flex-col gap-10 pt-10 font-bold">
                <i class="fa-solid fa-diagram-project fa-2xl"></i>

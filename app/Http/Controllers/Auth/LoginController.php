@@ -21,15 +21,13 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role == 'admin') {
-                return redirect('/');
+                return redirect('/')->with('success', 'Login successful.');
             }
 
-            return redirect('/');
+            return redirect('/')->with('success', 'Login successful.');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        return back()->with('error', 'The provided credentials do not match our records.');
     }
 
     public function logout(Request $request)
