@@ -3,6 +3,20 @@
 @section('title', 'Update File')
 
 @section('content')
+{{-- session for sucsses or error  --}}
+<div class="container mx-auto p-4">
+    @if(session('success'))
+        <div class="bg-green-500 text-white p-4 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="bg-red-500 text-white p-4 rounded mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+    
 <div class="p-4 md:ml-64">
     <form action="{{ route('files.update', $file->id) }}" method="POST" enctype="multipart/form-data" class="max-w-xl mx-auto">
         @csrf

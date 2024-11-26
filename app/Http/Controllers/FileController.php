@@ -274,6 +274,15 @@ class FileController extends Controller
     public function exportUsulMusnah()
     {
         return Excel::download(new UsulMusnahFilesExport, 'UsulMusnah_files.xlsx');
+    }
 
+    public function fileCount()
+    {
+        $totalArsip = DB::table('files')->count();
+        $arsipAktif = DB::table('files')->where('status', 'active')->count();
+        $arsipInaktif = DB::table('files')->where('status', 'inactive')->count();
+        $usulMusnah = DB::table('files')->where('status', 'usul_musnah')->count();
+
+        return view('home.index', compact('totalArsip', 'arsipAktif', 'arsipInaktif', 'usulMusnah'));
     }
 }

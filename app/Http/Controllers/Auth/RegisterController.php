@@ -19,11 +19,16 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
+        // Check if the user already exists
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->with('error', 'User already has an account.');
+        }
+
         $user = $this->create($request->all());
 
         Auth::login($user); // Use Auth facade to log in the user
 
-        return redirect('/login');
+        return redirect()->route('login')->with('success', 'Registration successful.');
     }
 
     protected function validator(array $data)

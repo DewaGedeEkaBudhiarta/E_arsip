@@ -4,6 +4,20 @@
 
 @section('content')
 <div class="p-4 sm:ml-64">  
+    {{-- session for sucsses or error  --}}
+    <div class="container mx-auto p-4">
+        @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
+    
+        @if(session('error'))
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
+        
 <div class="container mx-auto p-4"> 
   <form action="{{ route('informasi.update', $klasifikasiArsip->id) }}" method="POST" class="mb-4">
     @csrf

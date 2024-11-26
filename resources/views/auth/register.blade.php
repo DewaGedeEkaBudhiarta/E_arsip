@@ -11,6 +11,19 @@
   }
 </style>
 
+{{-- session for sucsses or error  --}}
+<div class="container mx-auto p-4">
+  @if(session('success'))
+      <div class="bg-green-500 text-white p-4 rounded mb-4">
+          {{ session('success') }}
+      </div>
+  @endif
+
+  @if(session('error'))
+      <div class="bg-red-500 text-white p-4 rounded mb-4">
+          {{ session('error') }}
+      </div>
+  @endif
 
 <div class="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
@@ -82,3 +95,18 @@
     </div>
   </div>
 </div>
+@section('scripts')
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+          let successMessage = document.querySelector('.bg-green-500');
+          let errorMessage = document.querySelector('.bg-red-500');
+          if (successMessage) {
+              successMessage.style.display = 'none';
+          }
+          if (errorMessage) {
+              errorMessage.style.display = 'none';
+          }
+      }, 5000); // 5000 milliseconds = 5 seconds     
+</script>
+@endsection

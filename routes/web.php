@@ -11,9 +11,7 @@ use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\DB;
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('home.index');
-    });
+    Route::get('/', [FileController::class, 'fileCount'])->name('home.index');
     
     Route::get('/activity-logs', [ActivityLogController::class, 'showActivityLogs'])->name('activity.logs');    
 
