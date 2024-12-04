@@ -9,9 +9,9 @@
 
    <div class="flex items-center justify">
       <h1 class="text-6xl font-bold">SIMPULAN</h1>
-      <img src="{{ asset('img/logo_ll.jpg') }}" alt="Logo" class="h-40 w-auto p-6">
+      <img src="{{ asset('img/logo lldikti.png') }}" alt="Logo" class="h-40 w-auto p-6">
    </div>
-   
+
    @include('rekapitulasi.index')
 
    <div class="p-4 sm:ml-64">
