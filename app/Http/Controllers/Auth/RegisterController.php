@@ -28,7 +28,7 @@ class RegisterController extends Controller
 
         Auth::login($user); // Use Auth facade to log in the user
 
-        return redirect()->route('login')->with('success', 'Registration successful.');
+        return redirect()->route('home')->with('success', 'Registration successful.');
     }
 
     protected function validator(array $data)

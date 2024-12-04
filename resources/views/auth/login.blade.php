@@ -29,13 +29,7 @@
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
       Sign in to your account
-    </h2>
-    <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-      Or
-      <a href="register" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-        create a new account
-      </a>
-    </p>
+    </h2>    
   </div>
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -77,16 +71,18 @@
 </div>
 @section('scripts')
 <script>
+  // Hide success and error messages after 5 seconds
   document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(function() {
-          let successMessage = document.querySelector('.bg-green-500');
-          let errorMessage = document.querySelector('.bg-red-500');
-          if (successMessage) {
-              successMessage.style.display = 'none';
-          }
-          if (errorMessage) {
-              errorMessage.style.display = 'none';
-          }
-      }, 5000); // 5000 milliseconds = 5 seconds     
+        setTimeout(function() {
+            let successMessage = document.querySelector('.bg-green-500');
+            let errorMessage = document.querySelector('.bg-red-500');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+        }, 5000); // 5000 milliseconds = 5 seconds
+    });
 </script>
 @endsection

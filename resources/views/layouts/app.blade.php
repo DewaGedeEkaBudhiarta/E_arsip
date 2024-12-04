@@ -23,7 +23,7 @@
   @php
     $currentUser = Auth::user();
   @endphp
-
+  
   @include('partials.sidebar', ['currentUser' => $currentUser])
 
   @yield('content')
