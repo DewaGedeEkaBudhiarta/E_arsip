@@ -71,7 +71,7 @@
                 <select id="classification" name="classification" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                     <option value="terbuka" {{ (old('classification', $file->classification ?? '') == 'terbuka') ? 'selected' : '' }}>Terbuka</option>
                     <option value="terbatas" {{ (old('classification', $file->classification ?? '') == 'terbatas') ? 'selected' : '' }}>Terbatas</option>
-                    <option value="tertutup" {{ (old('classification', $file->classification ?? '') == 'tertutup') ? 'selected' : '' }}>Tertutup</option>
+                    <option value="rahasia" {{ (old('classification', $file->classification ?? '') == 'rahasia') ? 'selected' : '' }}>Rahasia</option>
                 </select>
             </div>
             <div>
@@ -145,5 +145,19 @@
               indeksField.value = '';
           }
       };
+
+        // Hide success and error messages after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(function() {
+                    let successMessage = document.querySelector('.bg-green-500');
+                    let errorMessage = document.querySelector('.bg-red-500');
+                    if (successMessage) {
+                        successMessage.style.display = 'none';
+                    }
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none';
+                    }
+                }, 5000); // 5000 milliseconds = 5 seconds
+            });
   </script>
 @endsection

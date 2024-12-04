@@ -1,3 +1,17 @@
+{{-- session for sucsses or error  --}}
+<div class="container mx-auto p-4">
+  @if(session('success'))
+      <div class="bg-green-500 text-white p-4 rounded mb-4">
+          {{ session('success') }}
+      </div>
+  @endif
+
+  @if(session('error'))
+      <div class="bg-red-500 text-white p-4 rounded mb-4">
+          {{ session('error') }}
+      </div>
+  @endif
+  
 <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data" class="max-w-xl mx-auto">
   @csrf
   {{-- Drag and drop file --}}
@@ -49,7 +63,7 @@
       <select id="classification" name="classification" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
           <option value="terbuka">Terbuka</option>
           <option value="terbatas">Terbatas</option>
-          <option value="tertutup">Tertutup</option>
+          <option value="rahasia">Rahasia</option>
       </select>
     </div>
     {{-- Kelas dropdown --}}

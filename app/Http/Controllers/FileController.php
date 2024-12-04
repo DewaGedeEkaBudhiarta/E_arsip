@@ -64,7 +64,7 @@ class FileController extends Controller
             'kurun_waktu' => 'required|string|max:255',
             'indeks' => 'nullable|string|max:255',
             'keterangan' => 'required|string',
-            'classification' => 'required|string|in:terbuka,terbatas,tertutup',
+            'classification' => 'required|string|in:terbuka,terbatas,rahasia',
             'kelas' => 'required|string|in:umum,vital'
         ]);
         // dd('Validation passed', $request->all());
@@ -215,7 +215,7 @@ class FileController extends Controller
             'kurun_waktu' => 'required|string|max:255',
             'indeks' => 'nullable|string|max:255',
             'keterangan' => 'required|string',
-            'classification' => 'required|string|in:terbuka,terbatas,tertutup',
+            'classification' => 'required|string|in:terbuka,terbatas,rahasia',
             'kelas' => 'required|string|in:umum,vital'
         ]);
 
