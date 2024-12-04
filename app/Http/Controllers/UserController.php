@@ -26,11 +26,10 @@ class UserController extends Controller
     {
         $request->validate([
             'file_id' => 'required|integer|exists:files,id',
-            'classification' => 'required|string|in:terbatas,tertutup'
+            'classification' => 'required|string|in:terbatas,rahasia'
         ]);
 
         $existingPermission = DB::table('file_user')
-            ->where('file_id', $request->file_id)
             ->where('user_id', $userId)
             ->where('classification', $request->classification)
             ->first();
@@ -43,24 +42,30 @@ class UserController extends Controller
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        }
 
-        return redirect()->back()->with('success', 'Permission granted successfully.');
+            return redirect()->back()->with('success', 'Permission granted successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Permission already exists.');
+        }
     }
 
     public function removePermission(Request $request, $userId)
     {
         $request->validate([
             'file_id' => 'required|integer|exists:files,id',
-            'classification' => 'required|string|in:terbatas,tertutup'
+            'classification' => 'required|string|in:terbatas,rahasia'
         ]);
 
-        DB::table('file_user')
+        $deleted = DB::table('file_user')
             ->where('file_id', $request->file_id)
             ->where('user_id', $userId)
             ->where('classification', $request->classification)
             ->delete();
 
-        return redirect()->back()->with('success', 'Permission removed successfully.');
+        if ($deleted) {
+            return redirect()->back()->with('success', 'Permission removed successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Permission not found.');
+        }
     }
 }
