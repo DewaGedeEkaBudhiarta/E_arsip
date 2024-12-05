@@ -26,7 +26,7 @@
                     <th class="py-2 px-4 border-b">Status</th>
                     <th class="py-2 px-4 border-b">Action</th>
                     @if (Auth::user()->role == 'admin') <!-- Check if the user is an admin -->
-                    <th class="py-2 px-4 border-b">Delete</th>
+                        <th class="py-2 px-4 border-b">Delete</th>
                     @endif
                 </tr>
             </thead>
@@ -41,15 +41,16 @@
                     <td class="border-2 py-2 px-4 border-b">{{ $log->tanggal }}</td>
                     <td class="border-2 py-2 px-4 border-b">{{ $log->status }}</td>
                     <td class="border-2 py-2 px-4 border-b">{{ $log->action }}</td>
-                    <td class="border-2 py-2 px-4 border-b">
-                        @if (Auth::user()->role == 'admin') <!-- Check if the user is an admin -->
-                        <form action="{{ route('activity.logs.delete', $log->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Delete</button>
-                        </form>
-                        @endif
-                    </td>
+                    <!-- Check if the user is an admin -->
+                    @if (Auth::user()->role == 'admin') 
+                        <td class="border-2 py-2 px-4 border-b">
+                            <form action="{{ route('activity.logs.delete', $log->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Delete</button>
+                            </form>
+                        </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
