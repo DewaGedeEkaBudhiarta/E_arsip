@@ -39,6 +39,7 @@
                     <th class="py-3 px-6">Keterangan</th>
                     <th class="py-3 px-10">Klasifikasi</th>
                     <th class="py-3 px-10">Kelas</th>
+                    <th class="py-3 px-10">Lokasi Rak</th>
                     <th class="py-3 px-10">Aksi</th>
                 </tr>
             </thead>
@@ -50,27 +51,28 @@
                     (Auth::user()->role == 'user' && $file->classification == 'terbuka') ||
                     (Auth::user()->role == 'user' && $file->user_id == Auth::id()) ||
                     (Auth::user()->role == 'user' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
-                    <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
-                    <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
-                    <td class="border-2 py-0.5 px-1">
-                        <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
-                            @csrf
-                            <input type="hidden" name="status" value="inactive">
-                            <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                Set Inaktif
-                            </button>
-                        </form>
-                        <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                            Download
-                        </a>
-                    </td>
+                        <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
+                        <td class="border-2 py-4 px-6">{{ $file->lokasi_rak }}</td>
+                        <td class="border-2 py-0.5 px-1">
+                            <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
+                                @csrf
+                                <input type="hidden" name="status" value="inactive">
+                                <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                                    Set Inaktif
+                                </button>
+                            </form>
+                            <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                                Download
+                            </a>
+                        </td>
                     @endif
                 </tr>
                 @empty

@@ -43,24 +43,13 @@ class KlasifikasiArsipController extends Controller
             'Indeks' => $request->indeks,
         ]);
 
-        // Log the activity
-        ActivityLog::create([
-            'nomor_berkas' => $request->no_berkas,
-            'nama_berkas' => $request->file_name,
-            'user_pengakses' => Auth::user()->name,
-            'jam_ubah_create' => now(),
-            'tanggal' => now()->toDateString(),
-            'status' => 'completed',
-            'action' => 'created',
-        ]);
-
         return redirect()->route('informasi-arsip.index')->with('success', 'Klasifikasi Arsip berhasil ditambahkan.');
     }
 
     public function destroy($id)
     {
         $klasifikasiArsip = KlasifikasiArsip::findOrFail($id);
-        $klasifikasiArsip->delete();
+        $klasifikasiArsip->delete();        
 
         return redirect()->route('informasi-arsip.index')->with('success', 'Klasifikasi Arsip berhasil dihapus.');
     }
@@ -93,18 +82,7 @@ class KlasifikasiArsipController extends Controller
             'Transaksi' => $request->transaksi,
             'Tersier' => $request->tersier,
             'Indeks' => $request->indeks,
-        ]);
-
-        // Log the activity
-        ActivityLog::create([
-            'nomor_berkas' => $request->no_berkas,
-            'nama_berkas' => $request->file_name,
-            'user_pengakses' => Auth::user()->name,
-            'jam_ubah_create' => now(),
-            'tanggal' => now()->toDateString(),
-            'status' => 'completed',
-            'action' => 'updated',
-        ]);
+        ]);        
 
         return redirect()->route('informasi-arsip.index')->with('success', 'Informasi updated successfully.');
     }

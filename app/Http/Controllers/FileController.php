@@ -65,7 +65,8 @@ class FileController extends Controller
             'indeks' => 'nullable|string|max:255',
             'keterangan' => 'required|string',
             'classification' => 'required|string|in:terbuka,terbatas,rahasia',
-            'kelas' => 'required|string|in:umum,vital'
+            'kelas' => 'required|string|in:umum,vital',
+            'lokasi_rak' => 'nullable|string|max:255', 
         ]);
         // dd('Validation passed', $request->all());
     
@@ -90,6 +91,7 @@ class FileController extends Controller
             'keterangan' => $request->keterangan,
             'classification' => $request->classification,
             'kelas' => $request->kelas,
+            'lokasi_rak' => $request->lokasi_rak,
             'file_path' => $filePath,
             'user_id' => Auth::id(),
             'created_at' => now(),
@@ -146,6 +148,17 @@ class FileController extends Controller
         $deleted = Storage::disk('public')->delete($storagePath);
         // Debugging statement to check if the file was deleted
         // dd($deleted);
+
+        // Log the activity before deleting the file
+        ActivityLog::create([
+            'nomor_berkas' => $file->no_berkas,
+            'nama_berkas' => $file->file_name,
+            'user_pengakses' => Auth::user()->name,
+            'jam_ubah_create' => now(),
+            'tanggal' => now()->toDateString(),
+            'status' => 'completed',
+            'action' => 'deleted',
+        ]);
 
         // Check if the file was deleted
         if (!$deleted) {
@@ -216,7 +229,8 @@ class FileController extends Controller
             'indeks' => 'nullable|string|max:255',
             'keterangan' => 'required|string',
             'classification' => 'required|string|in:terbuka,terbatas,rahasia',
-            'kelas' => 'required|string|in:umum,vital'
+            'kelas' => 'required|string|in:umum,vital',
+            'lokasi_rak' => 'nullable|string|max:255',
         ]);
 
         $fileData = [
@@ -228,6 +242,7 @@ class FileController extends Controller
             'keterangan' => $request->keterangan,
             'classification' => $request->classification,
             'kelas' => $request->kelas,
+            'lokasi_rak' => $request->lokasi_rak,
             'updated_at' => now(),
         ];
 
@@ -250,7 +265,7 @@ class FileController extends Controller
             'jam_ubah_create' => now(),
             'tanggal' => now()->toDateString(),
             'status' => 'completed',
-            'action' => 'updated',
+            'action' => 'updated file',
         ]);
 
         return redirect()->route('arsip-pasi.index')->with('success', 'File updated successfully.');

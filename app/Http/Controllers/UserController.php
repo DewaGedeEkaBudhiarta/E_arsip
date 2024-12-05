@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -43,6 +44,20 @@ class UserController extends Controller
                 'updated_at' => now()
             ]);
 
+            // Fetch the file details
+            $file = DB::table('files')->where('id', $request->file_id)->first();
+
+            // Log the activity
+            ActivityLog::create([
+                'nomor_berkas' => $file->no_berkas,
+                'nama_berkas' => $file->file_name,
+                'user_pengakses' => Auth::user()->name,
+                'jam_ubah_create' => now(),
+                'tanggal' => now()->toDateString(),
+                'status' => 'completed',
+                'action' => 'permission_granted',
+            ]);
+
             return redirect()->back()->with('success', 'Permission granted successfully.');
         } else {
             return redirect()->back()->with('error', 'Permission already exists.');
@@ -63,6 +78,20 @@ class UserController extends Controller
             ->delete();
 
         if ($deleted) {
+            // Fetch the file details
+            $file = DB::table('files')->where('id', $request->file_id)->first();
+
+            // Log the activity
+            ActivityLog::create([
+                'nomor_berkas' => $file->no_berkas,
+                'nama_berkas' => $file->file_name,
+                'user_pengakses' => Auth::user()->name,
+                'jam_ubah_create' => now(),
+                'tanggal' => now()->toDateString(),
+                'status' => 'completed',
+                'action' => 'permission_revoked',
+            ]);
+
             return redirect()->back()->with('success', 'Permission removed successfully.');
         } else {
             return redirect()->back()->with('error', 'Permission not found.');

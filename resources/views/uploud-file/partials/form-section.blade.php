@@ -55,7 +55,11 @@
       <div class="mb-4">
         <label for="indeks" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indeks (kata tangkap/Kata kunci)</label>
         <input type="text" id="indeks" name="indeks" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" readonly>
-    </div>
+      </div>
+      <div class="mb-4">
+        <label for="lokasi_rak" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi Rak</label>
+        <input type="varchar" id="lokasi_rak" name="lokasi_rak" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678">
+      </div>
     </div>
     {{-- Classification dropdown --}}
     <div>

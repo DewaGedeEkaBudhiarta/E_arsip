@@ -12,14 +12,8 @@ use Illuminate\Support\Facades\DB;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [FileController::class, 'fileCount'])->name('home.index');
-    
-    Route::get('/activity-logs', [ActivityLogController::class, 'showActivityLogs'])->name('activity.logs');    
-
+            
     Route::get('/informasi-arsip', [KlasifikasiArsipController::class, 'index'])->name('informasi-arsip.index');
-    Route::post('/informasi-arsip', [KlasifikasiArsipController::class, 'store'])->name('informasi-arsip.store');
-    Route::delete('/informasi-arsip/{id}', [KlasifikasiArsipController::class, 'destroy'])->name('informasi-arsip.destroy');
-    Route::get('/informasi/{id}/edit', [KlasifikasiArsipController::class, 'edit'])->name('informasi.edit');
-    Route::post('/informasi/{id}/update', [KlasifikasiArsipController::class, 'update'])->name('informasi.update');
 
     Route::get('/pemindahan/table-active', function () {
         $files = DB::table('files')->where('status', 'active')->get();
@@ -57,10 +51,16 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/users/{user}/give-permission', [UserController::class, 'givePermission'])->name('users.givePermission');
     Route::post('/users/{user}/remove-permission', [UserController::class, 'removePermission'])->name('users.removePermission');
 
+    Route::get('/activity-logs', [ActivityLogController::class, 'showActivityLogs'])->name('activity.logs');
     Route::delete('/activity-logs/{id}', [ActivityLogController::class, 'deleteLog'])->name('activity.logs.delete');
     
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [RegisterController::class, 'register']);
+
+    Route::post('/informasi-arsip', [KlasifikasiArsipController::class, 'store'])->name('informasi-arsip.store');
+    Route::delete('/informasi-arsip/{id}', [KlasifikasiArsipController::class, 'destroy'])->name('informasi-arsip.destroy');
+    Route::get('/informasi/{id}/edit', [KlasifikasiArsipController::class, 'edit'])->name('informasi.edit');
+    Route::post('/informasi/{id}/update', [KlasifikasiArsipController::class, 'update'])->name('informasi.update');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
