@@ -44,6 +44,7 @@ class UserController extends Controller
                 'updated_at' => now()
             ]);
 
+
             // Fetch the file details
             $file = DB::table('files')->where('id', $request->file_id)->first();
 
@@ -57,7 +58,6 @@ class UserController extends Controller
                 'status' => 'completed',
                 'action' => 'permission_granted',
             ]);
-
             return redirect()->back()->with('success', 'Permission granted successfully.');
         } else {
             return redirect()->back()->with('error', 'Permission already exists.');
@@ -91,7 +91,6 @@ class UserController extends Controller
                 'status' => 'completed',
                 'action' => 'permission_revoked',
             ]);
-
             return redirect()->back()->with('success', 'Permission removed successfully.');
         } else {
             return redirect()->back()->with('error', 'Permission not found.');
