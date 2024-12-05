@@ -26,9 +26,8 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
 
-        Auth::login($user); // Use Auth facade to log in the user
-
-        return redirect()->route('home')->with('success', 'Registration successful.');
+        // No need to log in the user, just redirect back to the registration page
+        return redirect()->route('register')->with('success', 'Registration successful.');
     }
 
     protected function validator(array $data)
