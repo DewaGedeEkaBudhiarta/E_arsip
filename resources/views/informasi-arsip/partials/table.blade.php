@@ -48,7 +48,7 @@
             </thead>
             <tbody>
                 @foreach($klasifikasiArsip as $arsip)
-                <tr>
+                <tr class="file-row">
                     <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
                     <td class="border-2 py-3 px-6">{{ $arsip->Fungsi ?? '' }}</td>
                     <td class="border-2 py-3 px-6">{{ $arsip->Primer ?? '' }}</td>
@@ -77,4 +77,5 @@
                 @endforeach
             </tbody>
         </table>
+        @Include('partials.pagination')
     </div>
