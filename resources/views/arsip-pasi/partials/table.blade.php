@@ -51,32 +51,32 @@
                     (Auth::user()->role == 'user' && $file->classification == 'terbuka') ||
                     (Auth::user()->role == 'user' && $file->user_id == Auth::id()) ||
                     (Auth::user()->role == 'user' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
-                        <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->lokasi_rak }}</td>
-                        <td class="border-2 py-2 px-10">
-                            <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                Download
-                            </a>
-                            <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;" class="delete-form">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                    Hapus
-                                </button>
-                            </form>
-                            <a href="{{ route('files.edit', $file->id) }}" class="bg-green-700 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                Edit
-                            </a>
-                        </td>
-                        </td>
+                    <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->lokasi_rak }}</td>
+                    <td class="border-2 py-2 px-10">
+                        <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                            Download
+                        </a>
+                        <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                                Hapus
+                            </button>
+                        </form>
+                        <a href="{{ route('files.edit', $file->id) }}" class="bg-green-700 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                            Edit
+                        </a>
+                    </td>
+                    </td>
                     @endif
                 </tr>
                 @empty
@@ -86,4 +86,5 @@
                 @endforelse
             </tbody>
         </table>
+        @include('pagination.index')
     </div>

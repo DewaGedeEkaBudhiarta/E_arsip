@@ -19,11 +19,11 @@
         {{-- {{ dd($klasifikasiArsip) }} --}}
         {{-- only admin can acess --}}
         @if (Auth::user()->role == 'admin')
-            <div class="flex justify-between mb-4">
-                <a href="{{ route('informasi-arsip.index', ['action' => 'create']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    + Tambah Klasifikasi Arsip
-                </a>
-            </div>
+        <div class="flex justify-between mb-4">
+            <a href="{{ route('informasi-arsip.index', ['action' => 'create']) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                + Tambah Klasifikasi Arsip
+            </a>
+        </div>
         @endif
 
         <div class="flex items-center mb-4">
@@ -41,8 +41,8 @@
                     <th class="py-3 px-6">Tersier</th>
                     <th class="py-3 px-6">Indeks</th>
                     {{-- only admin can see --}}
-                    @if (Auth::user()->role == 'admin')                    
-                        <th class="py-3 px-10">Aksi</th>
+                    @if (Auth::user()->role == 'admin')
+                    <th class="py-3 px-10">Aksi</th>
                     @endif
                 </tr>
             </thead>
@@ -60,21 +60,22 @@
                     {{-- delete using Transaksi as unique identifier --}}
                     {{-- only admin can acess --}}
                     @if (Auth::user()->role == 'admin')
-                        <td class="border-2 py-0.5 px-1">
-                            <form action="{{ route('informasi-arsip.destroy', $arsip->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
-                                    Hapus
-                                </button>
-                            </form>
-                            <a href="{{ route('informasi.edit', $arsip->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
-                                Edit
-                            </a>
-                        </td>
+                    <td class="border-2 py-0.5 px-1">
+                        <form action="{{ route('informasi-arsip.destroy', $arsip->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-1 rounded">
+                                Hapus
+                            </button>
+                        </form>
+                        <a href="{{ route('informasi.edit', $arsip->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 rounded">
+                            Edit
+                        </a>
+                    </td>
                     @endif
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        @include('pagination.index')
     </div>
