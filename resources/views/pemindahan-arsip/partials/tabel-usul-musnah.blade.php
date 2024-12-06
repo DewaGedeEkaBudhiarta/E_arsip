@@ -43,7 +43,7 @@
             <tbody>
                 {{-- Display uploaded files --}}
                 @forelse ($files as $file)
-                <tr class="bg-white border-b">
+                <tr class="bg-white border-b file-row">
                     @if (Auth::user()->role == 'admin' ||
                     (Auth::user()->role == 'user' && $file->classification == 'terbuka') ||
                     (Auth::user()->role == 'user' && $file->user_id == Auth::id()) ||
@@ -87,4 +87,6 @@
                 @endforelse
             </tbody>
         </table>
+        @include('partials.pagination')
     </div>
+</div>
