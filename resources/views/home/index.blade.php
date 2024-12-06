@@ -8,8 +8,8 @@
 <div class="p-4 sm:ml-64">
 
    <div class="flex items-center justify">
-      <img src="{{ asset('img/logo seri 2.png') }}" alt="Logo" class="h-40 w-auto p-6">
-      <img src="{{ asset('img/logo lldikti.png') }}" alt="Logo" class="h-40 w-auto p-6">
+      <img src="{{ asset('img/logo seri 3.png') }}" alt="Logo" class="h-40 w-auto p-6">
+      <!-- <img src="{{ asset('img/logo lldikti.png') }}" alt="Logo" class="h-40 w-auto p-6"> -->
    </div>
 
    @include('rekapitulasi.index')
