@@ -86,6 +86,5 @@
                 @endforelse
             </tbody>
         </table>
-    </div>
-    @include('partials.pagination')
+    </div>    
 </div>

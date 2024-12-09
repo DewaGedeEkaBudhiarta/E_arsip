@@ -76,6 +76,5 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
-        @Include('partials.pagination')
+        </table>        
     </div>
