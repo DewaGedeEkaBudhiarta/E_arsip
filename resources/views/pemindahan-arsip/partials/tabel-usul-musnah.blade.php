@@ -13,16 +13,16 @@
         </div>
         @endif
 
-        <h1 class="text-3xl font-bold mb-4">Daftar Arsip usul musnah</h1>
+        <h1 class="text-3xl font-bold mb-4">Daftar Arsip Usul Musnah</h1>
 
         <div class="flex justify-between mb-4">
             <a href="{{ route('pemindahan.export-usulMusnah') }}" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                Export usul musnah Files to Excel
+                Export Usul Musnah Files to Excel
             </a>
         </div>
 
         <div class="flex items-center mb-4">
-            <input type="text" id="search-input" class="ml-2 w-full pl-10 text-sm text-gray-700" placeholder="Cari Arsip Aktif">
+            <input type="text" id="search-input" class="ml-2 w-full pl-10 text-sm text-gray-700" placeholder="Cari Arsip Usul Musnah">
         </div>
         <table class="border-2 border-2-cyan-200 w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -48,36 +48,36 @@
                     (Auth::user()->role == 'user' && $file->classification == 'terbuka') ||
                     (Auth::user()->role == 'user' && $file->user_id == Auth::id()) ||
                     (Auth::user()->role == 'user' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
-                        <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->lokasi_rak }}</td>
-                        <td class="border-2 py-0.5 px-1">
-                            <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
-                                @csrf
-                                <input type="hidden" name="status" value="inactive">
-                                <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                    Set Inaktif
-                                </button>
-                            </form>
+                    <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->lokasi_rak }}</td>
+                    <td class="border-2 py-0.5 px-1">
+                        <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
+                            @csrf
+                            <input type="hidden" name="status" value="inactive">
+                            <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                                Set Inaktif
+                            </button>
+                        </form>
 
-                            <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;" class="delete-form">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                    Hapus
-                                </button>
-                            </form>
-                            <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                Download
-                            </a>
-                        </td>
+                        <form action="{{ route('delete', ['id' => $file->id]) }}" method="POST" style="display:inline;" class="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                                Hapus
+                            </button>
+                        </form>
+                        <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                            Download
+                        </a>
+                    </td>
                     @endif
                 </tr>
                 @empty
@@ -86,6 +86,6 @@
                 </tr>
                 @endforelse
             </tbody>
-        </table>        
+        </table>
     </div>
 </div>
