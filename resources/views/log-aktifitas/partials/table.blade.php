@@ -17,16 +17,16 @@
         <table class="border-2 border-2-cyan-200 min-w-full bg-white">
             <thead>
                 <tr>
-                    <th class="py-3 px-6">No</th>
-                    <th class="py-2 px-4 border-b">Nomor Berkas</th>
-                    <th class="py-2 px-4 border-b">Nama Berkas</th>
-                    <th class="py-2 px-4 border-b">User Pengakses</th>
-                    <th class="py-2 px-4 border-b">Jam Ubah/Create</th>
-                    <th class="py-2 px-4 border-b">Tanggal</th>
-                    <th class="py-2 px-4 border-b">Status</th>
-                    <th class="py-2 px-4 border-b">Action</th>
+                    <th class="border-2 py-4 px-6">No</th>
+                    <th class="border-2 py-4 px-6">Nomor Berkas</th>
+                    <th class="border-2 py-4 px-6">Nama Berkas</th>
+                    <th class="border-2 py-4 px-6">User Pengakses</th>
+                    <th class="border-2 py-4 px-6">Jam Ubah/Create</th>
+                    <th class="border-2 py-4 px-6">Tanggal</th>
+                    <th class="border-2 py-4 px-6">Status</th>
+                    <th class="border-2 py-4 px-6">Action</th>
                     @if (Auth::user()->role == 'admin') <!-- Check if the user is an admin -->
-                    <th class="py-2 px-4 border-b">Delete</th>
+                    <th class="border-2 py-4 px-6">Delete</th>
                     @endif
                 </tr>
             </thead>
