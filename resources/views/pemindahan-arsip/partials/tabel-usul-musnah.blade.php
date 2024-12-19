@@ -27,17 +27,17 @@
         <table class="border-2 border-2-cyan-200 w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
-                    <th class="py-3 px-6">No</th>
-                    <th class="py-3 px-6">Kode Klasifikasi</th>
-                    <th class="py-3 px-6">No Berkas</th>
-                    <th class="py-3 px-6">Nama</th>
-                    <th class="py-3 px-9">Kurun Waktu</th>
-                    <th class="py-3 px-6">Indeks(Kata tangkap/Kata Kunci)</th>
-                    <th class="py-3 px-6">Keterangan</th>
-                    <th class="py-3 px-10">Klasifikasi</th>
-                    <th class="py-3 px-10">Kelas</th>
-                    <th class="py-3 px-10">Lokasi Rak</th>
-                    <th class="py-3 px-10">Aksi</th>
+                    <th class="border-2 py-4 px-6">No</th>
+                    <th class="border-2 py-4 px-6">Kode Klasifikasi</th>
+                    <th class="border-2 py-4 px-6">No Berkas</th>
+                    <th class="border-2 py-4 px-6">Nama</th>
+                    <th class="border-2 py-3 px-9">Kurun Waktu</th>
+                    <th class="border-2 py-4 px-6">Indeks(Kata tangkap/Kata Kunci)</th>
+                    <th class="border-2 py-4 px-6">Keterangan</th>
+                    <th class="border-2 py-3 px-10">Klasifikasi</th>
+                    <th class="border-2 py-3 px-10">Kelas</th>
+                    <th class="border-2 py-3 px-10">Lokasi Rak</th>
+                    <th class="border-2 py-3 px-10">Aksi</th>
                 </tr>
             </thead>
             <tbody>

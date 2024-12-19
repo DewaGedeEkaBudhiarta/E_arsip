@@ -27,17 +27,17 @@
         <table class="border-2 border-2-cyan-200 w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
-                    <th class="py-3 px-6">No</th>
-                    <th class="py-3 px-6">Kode Klasifikasi</th>
-                    <th class="py-3 px-6">No Berkas</th>
-                    <th class="py-3 px-6">Nama</th>
-                    <th class="py-3 px-9">Kurun Waktu</th>
-                    <th class="py-3 px-6">Indeks(Kata tangkap/Kata Kunci)</th>
-                    <th class="py-3 px-6">Keterangan</th>
-                    <th class="py-3 px-10">Klasifikasi</th>
-                    <th class="py-3 px-10">Kelas</th>
-                    <th class="py-3 px-10">Lokasi Rak</th>
-                    <th class="py-3 px-10">Aksi</th>
+                    <th class="border-2 py-4 px-6">No</th>
+                    <th class="border-2 py-4 px-6">Kode Klasifikasi</th>
+                    <th class="border-2 py-4 px-6">No Berkas</th>
+                    <th class="border-2 py-4 px-6">Nama</th>
+                    <th class="border-2 py-3 px-9">Kurun Waktu</th>
+                    <th class="border-2 py-4 px-6">Indeks(Kata tangkap/Kata Kunci)</th>
+                    <th class="border-2 py-4 px-6">Keterangan</th>
+                    <th class="border-2 py-3 px-10">Klasifikasi</th>
+                    <th class="border-2 py-3 px-10">Kelas</th>
+                    <th class="border-2 py-3 px-10">Lokasi Rak</th>
+                    <th class="border-2 py-3 px-10">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,31 +48,31 @@
                     (Auth::user()->role == 'user' && $file->classification == 'terbuka') ||
                     (Auth::user()->role == 'user' && $file->user_id == Auth::id()) ||
                     (Auth::user()->role == 'user' && DB::table('file_user')->where('file_id', $file->id)->where('user_id', Auth::id())->exists()))
-                        <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
-                        <td class="border-2 py-4 px-6">{{ $file->lokasi_rak }}</td>
-                        <td class="border-2 py-0.5 px-1">
-                            <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
-                                @csrf
-                                <input type="hidden" name="status" value="active">
-                                <button type="submit" class="bg-green-700 hover:bg-green-700 text-white font-bold py-0.5 px-1 m-2 rounded">Set Aktif</button>
-                            </form>
-                            <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
-                                @csrf
-                                <input type="hidden" name="status" value="usul_musnah">
-                                <button type="submit" class="bg-red-700 hover:bg-red-700 text-white font-bold py-0.5 px-1 m-2 rounded">Usul Musnah</button>
-                            </form>
-                            <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
-                                Download
-                            </a>
-                        </td>
+                    <td class="border-2 py-4 px-6">{{ $loop->iteration }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kode_klasifikasi }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->no_berkas }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->file_name }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kurun_waktu }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->indeks }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->keterangan }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->classification }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->kelas }}</td>
+                    <td class="border-2 py-4 px-6">{{ $file->lokasi_rak }}</td>
+                    <td class="border-2 py-0.5 px-1">
+                        <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
+                            @csrf
+                            <input type="hidden" name="status" value="active">
+                            <button type="submit" class="bg-green-700 hover:bg-green-700 text-white font-bold py-0.5 px-1 m-2 rounded">Set Aktif</button>
+                        </form>
+                        <form action="{{ route('files.update-status', ['id' => $file->id]) }}" method="POST" style="display:inline;">
+                            @csrf
+                            <input type="hidden" name="status" value="usul_musnah">
+                            <button type="submit" class="bg-red-700 hover:bg-red-700 text-white font-bold py-0.5 px-1 m-2 rounded">Usul Musnah</button>
+                        </form>
+                        <a href="{{ url('/download/' . $file->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-1 m-2 rounded">
+                            Download
+                        </a>
+                    </td>
                     @endif
                 </tr>
                 @empty
@@ -81,6 +81,6 @@
                 </tr>
                 @endforelse
             </tbody>
-        </table>        
+        </table>
     </div>
 </div>
