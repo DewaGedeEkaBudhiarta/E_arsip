@@ -25,7 +25,7 @@
         </div>
 
         <div class="flex items-center mb-4">
-            <input type="text" id="search-input" class="ml-2 w-full pl-10 text-sm text-gray-700" placeholder="Cari Arsip Aktif">
+            <input type="text" id="search-input" class="ml-2 w-full pl-10 text-sm text-gray-700 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Arsip Aktif">
         </div>
         <table class="border-2 border-2-cyan-200 w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
